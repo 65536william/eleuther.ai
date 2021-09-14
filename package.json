@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "netlify-cms-app": "^2.15.41",
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2"
+    "eslint-config-next": "11.1.2",
+    "frontmatter-markdown-loader": "^3.6.3"
   }
 }
