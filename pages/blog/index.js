@@ -26,7 +26,6 @@ export async function getStaticProps() {
 }
 
 export default function BlogIndex({ postsList }) {
-  console.log(postsList);
   return (
     <Layout>
       <div className="blogIndex">
@@ -36,10 +35,10 @@ export default function BlogIndex({ postsList }) {
         <div className="blogPosts">
           {postsList.map((blogPost) => (
             <div className="postCard">
-              {blogPost.attributes.coverImage && (
+              {blogPost.attributes.cover && (
                 <Image
-                  src={blogPost.attributes.coverImage.substring(
-                    blogPost.attributes.coverImage.indexOf("/")
+                  src={blogPost.attributes.cover.substring(
+                    blogPost.attributes.cover.indexOf("/")
                   )}
                   layout="responsive"
                   width="200px"
@@ -63,8 +62,8 @@ export default function BlogIndex({ postsList }) {
           gap: 10%;
         }
         .postCard {
-          border: 2px solid black;
           border-radius: 0.25rem;
+          box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.05);
         }
         .cardMeta {
           padding: 1.25rem;
