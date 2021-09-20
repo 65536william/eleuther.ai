@@ -1,0 +1,8 @@
+---
+title: "Current Limitations of Language Models: What You Need is Retrieval"
+date: 2020-09-15T04:04:20-06:00
+authors:
+  - Aran Komatsuzaki
+description: We classify and re-examine some of the current approaches to improve the performance-computes trade-off of language models, including (1) non-causal models (such as masked language models), (2) extension of batch length with efficient attention, (3) recurrence, (4) conditional computation and (5) retrieval. We identify some limitations (1) - (4) suffer from. For example, (1) currently struggles with open-ended text generation with the output loosely constrained by the input as well as performing general textual tasks like GPT-2/3 due to its need for a specific fine-tuning dataset. (2) and (3) do not improve the prediction of the first ∼103 tokens. Scaling up a model size (e.g. efficiently with (4)) still results in poor performance scaling for some tasks. We argue (5) would resolve many of these limitations, and it can (a) reduce the amount of supervision and (b) efficiently extend the context over the entire training dataset and the entire past of the current sample. We speculate how to modify MARGE to perform unsupervised causal modeling that achieves (b) with the retriever jointly trained.
+link: https://arxiv.org/abs/2009.06857
+---

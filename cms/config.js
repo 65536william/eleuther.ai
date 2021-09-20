@@ -69,5 +69,48 @@ module.exports = {
         },
       ],
     },
+    {
+      name: "Publications",
+      label: "Publications",
+      editor: { preview: false },
+      label_singular: "Publication",
+      folder: "content/publications",
+      create: true,
+      slug: "{{slug}}",
+      extension: "md",
+      format: "yaml-frontmatter",
+      fields: [
+        {
+          label: "Title",
+          name: "title",
+          widget: "string",
+          required: true,
+        },
+        {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          required: true,
+        },
+        {
+          label: "Authors",
+          name: "authors",
+          widget: "list",
+          default: ["Contributor A, Contributor B"],
+        },
+        {
+          label: "Description",
+          name: "description",
+          widget: "text",
+          required: true,
+        },
+        {
+          label: "Link",
+          name: "link",
+          widget: "string",
+          required: true,
+        },
+      ],
+    },
   ],
 };

@@ -1,0 +1,11 @@
+---
+title: Towards a Model-theoretic View of Narratives
+date: 2021-03-23T22:33:23-06:00
+authors:
+  - Louis Castricato
+  - Stella Biderman
+  - Rogelio E. Cardona-Rivera
+  - David Thue
+description: In this paper, we propose the beginnings of a formal framework for modeling narrative \textit{qua} narrative. Our framework affords the ability to discuss key qualities of stories and their communication, including the flow of information from a Narrator to a Reader, the evolution of a Reader's story model over time, and Reader uncertainty. We demonstrate its applicability to computational narratology by giving explicit algorithms for measuring the accuracy with which information was conveyed to the Reader and two novel measurements of story coherence.
+link: https://arxiv.org/abs/2103.12872
+---
