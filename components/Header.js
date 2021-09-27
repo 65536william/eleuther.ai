@@ -8,8 +8,8 @@ export default function Header() {
         <Link href="/blog">Blog</Link>
         <Link href="/">Projects</Link>
         <Link href="/">Publications</Link>
-        <Link href="/">Dataset Hub</Link>
-        <Link href="/">Model Hub</Link>
+        <Link href="/">Datasets</Link>
+        <Link href="/">Models</Link>
       </nav>
       <style jsx>{`
         header {

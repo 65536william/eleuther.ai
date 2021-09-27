@@ -21,7 +21,7 @@ module.exports = {
   // The Pages collection
   collections: [
     {
-      name: "Blog",
+      name: "blog",
       label: "Blog",
       editor: { preview: false },
       label_singular: "Blog",
@@ -70,7 +70,33 @@ module.exports = {
       ],
     },
     {
-      name: "Publications",
+      name: "projects",
+      label: "Projects",
+      editor: { preview: false },
+      label_singular: "Project",
+      folder: "content/projects",
+      create: true,
+      slug: "{{slug}}",
+      extension: "md",
+      format: "yaml-frontmatter",
+      fields: [
+        {
+          label: "Title",
+          name: "title",
+          widget: "string",
+          required: true,
+        },
+        {
+          label: "Status",
+          name: "status",
+          widget: "select",
+          required: true,
+          options: ["Dormant", "Active", "Complete"],
+        },
+      ],
+    },
+    {
+      name: "publications",
       label: "Publications",
       editor: { preview: false },
       label_singular: "Publication",
@@ -107,6 +133,56 @@ module.exports = {
         {
           label: "Link",
           name: "link",
+          widget: "string",
+          required: true,
+        },
+      ],
+    },
+    {
+      name: "models",
+      label: "Models",
+      editor: { preview: false },
+      label_singular: "Model",
+      folder: "content/models",
+      create: true,
+      slug: "{{slug}}",
+      extension: "md",
+      format: "yaml-frontmatter",
+      fields: [
+        {
+          label: "Title",
+          name: "title",
+          widget: "string",
+          required: true,
+        },
+        {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          required: true,
+        },
+        {
+          label: "Repository",
+          name: "repository",
+          widget: "string",
+          required: true,
+        },
+      ],
+    },
+    {
+      name: "datasets",
+      label: "Datasets",
+      editor: { preview: false },
+      label_singular: "Dataset",
+      folder: "content/datasets",
+      create: true,
+      slug: "{{slug}}",
+      extension: "md",
+      format: "yaml-frontmatter",
+      fields: [
+        {
+          label: "Title",
+          name: "title",
           widget: "string",
           required: true,
         },

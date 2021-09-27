@@ -1,7 +1,7 @@
 import Layout from "../../components/Layout";
 import Image from "next/image";
 
-const importBlogPosts = async () => {
+const importPosts = async () => {
   const markdownFiles = require
     .context("../../content/blog", false, /\.md$/)
     .keys()
@@ -16,7 +16,7 @@ const importBlogPosts = async () => {
 };
 
 export async function getStaticProps() {
-  const postsList = await importBlogPosts();
+  const postsList = await importPosts();
 
   return {
     props: {
