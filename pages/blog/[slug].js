@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 
 import Layout from "../../components/Layout";
+import PostContent from "../../components/PostContent";
+import PostHeader from "../../components/PostHeader";
 
 export async function getStaticPaths() {
   const paths = fs
@@ -35,7 +37,12 @@ export default function BlogSlug({ post }) {
   const { html, attributes } = post;
   return (
     <Layout>
-      <article dangerouslySetInnerHTML={{ __html: html }}></article>
+      <PostHeader
+        title={attributes.title}
+        subtitle={attributes.description}
+        authors={attributes.authors}
+      />
+      <PostContent html={html} />
     </Layout>
   );
 }

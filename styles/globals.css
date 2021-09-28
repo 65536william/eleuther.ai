@@ -124,3 +124,8 @@ table {
 }
 
 /* EleutherAI Styling */
+
+body {
+  font-family: "Roboto";
+  font-weight: 400;
+}

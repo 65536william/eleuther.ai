@@ -1,5 +1,7 @@
 import Layout from "../../components/Layout";
 import Image from "next/image";
+import Link from "next/link";
+import IndexCard from "../../components/IndexCard";
 
 const importPosts = async () => {
   const markdownFiles = require
@@ -34,21 +36,23 @@ export default function BlogIndex({ postsList }) {
         </div>
         <div className="blogPosts">
           {postsList.map((blogPost) => (
-            <div className="postCard">
-              {blogPost.attributes.cover && (
-                <Image
-                  src={blogPost.attributes.cover.substring(
-                    blogPost.attributes.cover.indexOf("/")
-                  )}
-                  layout="responsive"
-                  width="200px"
-                  height="100px"
-                />
-              )}
-              <div className="cardMeta">
-                <h3>{blogPost.attributes.title}</h3>
-              </div>
-            </div>
+            <Link href={`blog/${encodeURIComponent(blogPost.slug)}`} passHref>
+              <IndexCard>
+                {blogPost.attributes.cover && (
+                  <Image
+                    src={blogPost.attributes.cover.substring(
+                      blogPost.attributes.cover.indexOf("/")
+                    )}
+                    layout="responsive"
+                    width="200px"
+                    height="100px"
+                  />
+                )}
+                <div className="cardMeta">
+                  <h3>{blogPost.attributes.title}</h3>
+                </div>
+              </IndexCard>
+            </Link>
           ))}
         </div>
       </div>
@@ -58,12 +62,8 @@ export default function BlogIndex({ postsList }) {
         }
         .blogPosts {
           display: grid;
-          grid-template-columns: repeat(4, 20vw);
-          gap: 10%;
-        }
-        .postCard {
-          border-radius: 0.25rem;
-          box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.05);
+          grid-template-columns: repeat(4, 1fr);
+          gap: 5rem;
         }
         .cardMeta {
           padding: 1.25rem;

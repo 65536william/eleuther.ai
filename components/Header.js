@@ -18,6 +18,10 @@ export default function Header() {
           justify-content: space-between;
           margin: 5vh 10vw;
         }
+        h1 {
+          font-family: "Epilogue";
+          font-weight: bold;
+        }
         nav {
           width: 50%;
           display: flex;
