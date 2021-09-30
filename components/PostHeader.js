@@ -9,6 +9,7 @@ export default function PostHeader({ title, subtitle, authors }) {
       <style jsx>{`
         .postheader {
           margin: 5vh 5vw;
+          width: 75%;
         }
         h1 {
           font-family: "Epilogue";

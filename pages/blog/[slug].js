@@ -11,9 +11,14 @@ export async function getStaticPaths() {
   const paths = fs
     .readdirSync(path.join(process.cwd(), "content/blog"))
     .map((fileName) => {
-      const trimmedName = fileName.substring(0, fileName.length - 3);
+      const trimmedName = fileName.substring(
+        0,
+        fileName.length - (fileName.length - fileName.indexOf("."))
+      );
       return {
-        params: { slug: trimmedName },
+        params: {
+          slug: trimmedName,
+        },
       };
     });
 
@@ -25,8 +30,15 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { slug } = params;
-
-  const post = await import(`../../content/blog/${slug}.md`).catch(() => null);
+  const filePath = fs
+    .readdirSync(path.join(process.cwd(), "content/blog"))
+    .filter(
+      (x) => x.indexOf(slug) === 0 && x.split("")[slug.length] === "."
+    )[0];
+  const extension = filePath.substring(slug.length, filePath.length);
+  const post = await import(`../../content/blog/${slug}${extension}`).catch(
+    () => null
+  );
 
   return {
     props: {
@@ -37,21 +49,23 @@ export async function getStaticProps({ params }) {
 
 export default function BlogSlug({ post }) {
   const { html, attributes } = post;
-  console.log(attributes);
   return (
     <Layout>
-      <PostHeader title={attributes.title} subtitle={attributes.description} />
       <div className="postgrid">
-        <PostContent html={html} />
+        <PostHeader
+          title={attributes.title}
+          subtitle={attributes.description}
+        />
         <PostMeta
           date={dayjs(attributes.date).format("DD MMMM, YYYY")}
           authors={attributes.authors}
         />
       </div>
+      <PostContent html={html} />
       <style jsx>{`
         .postgrid {
-          display: grid;
-          grid-template-columns: 75% 25%;
+          display: flex;
+          justify-content: space-between;
         }
       `}</style>
     </Layout>
