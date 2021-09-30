@@ -129,3 +129,19 @@ body {
   font-family: "Roboto";
   font-weight: 400;
 }
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.75;
+}
+
+p {
+  font-size: 1.125rem;
+  line-height: 1.5;
+}

@@ -12,8 +12,6 @@ export default function PostHeader({ title, subtitle, authors }) {
         }
         h1 {
           font-family: "Epilogue";
-          font-size: 1.5rem;
-          font-weight: bold;
           margin-bottom: 0.75%;
         }
         h2 {

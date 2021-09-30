@@ -1,9 +1,11 @@
 import fs from "fs";
 import path from "path";
+import dayjs from "dayjs";
 
 import Layout from "../../components/Layout";
 import PostContent from "../../components/PostContent";
 import PostHeader from "../../components/PostHeader";
+import PostMeta from "../../components/PostMeta";
 
 export async function getStaticPaths() {
   const paths = fs
@@ -35,14 +37,23 @@ export async function getStaticProps({ params }) {
 
 export default function BlogSlug({ post }) {
   const { html, attributes } = post;
+  console.log(attributes);
   return (
     <Layout>
-      <PostHeader
-        title={attributes.title}
-        subtitle={attributes.description}
-        authors={attributes.authors}
-      />
-      <PostContent html={html} />
+      <PostHeader title={attributes.title} subtitle={attributes.description} />
+      <div className="postgrid">
+        <PostContent html={html} />
+        <PostMeta
+          date={dayjs(attributes.date).format("DD MMMM, YYYY")}
+          authors={attributes.authors}
+        />
+      </div>
+      <style jsx>{`
+        .postgrid {
+          display: grid;
+          grid-template-columns: 75% 25%;
+        }
+      `}</style>
     </Layout>
   );
 }
