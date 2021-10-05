@@ -1,6 +1,6 @@
 ---
 title: On the Sizes of OpenAI API Models
-date: 2021-05-24T14:00:03-06:00
+date: 20210524
 authors:
   - Leo Gao
 description: Using eval harness, we can deduce the sizes of OpenAI API models from their performance.
@@ -8,7 +8,7 @@ description: Using eval harness, we can deduce the sizes of OpenAI API models fr
 
 OpenAI hasn't officially said anything about their API model sizes, which naturally leads to the question of just how big they are. Thankfully, we can use [eval harness](https://github.com/EleutherAI/lm-evaluation-harness) to evaluate the API models on a bunch of tasks and compare to the figures in the GPT-3 paper. Obviously since there are going to be minor differences in task implementation and OpenAI is probably fine tuning their API models all the time, the numbers don't line up exactly, but they should give a pretty good idea of the ballpark things are in.
 
-{{<figure align="center" caption="All GPT-3 figures are from the [GPT-3 paper](https://arxiv.org/pdf/2005.14165.pdf#page=63); all API figures are computed using eval harness">}}
+<figure align="center" caption="All GPT-3 figures are from the [GPT-3 paper](https://arxiv.org/pdf/2005.14165.pdf#page=63); all API figures are computed using eval harness">
 | Model | LAMBADA ppl ↓ | LAMBADA acc ↑ | Winogrande ↑ | Hellaswag ↑ | PIQA ↑ |
 |-----------------|--- |--- |--- |--- |--- |
 | GPT-3-124M | 18.6 | 42.7% | 52.0% | 33.7% | 64.6% |
@@ -24,6 +24,6 @@ OpenAI hasn't officially said anything about their API model sizes, which natura
 | GPT-3-175B | 3.00 | 76.2% | 70.2% | 78.9% | 81.0% |
 | Davinci | 2.97 | 74.8% | 70.2% | 78.1% | 80.4% |
 
-{{</figure>}}
+</figure>
 
 Ada, Babbage, Curie and Davinci line up closely with 350M, 1.3B, 6.7B, and 175B respectively. Obviously this isn't ironclad evidence that the models _are_ those sizes, but it's pretty suggestive.

@@ -5,14 +5,7 @@ import Layout from "../../components/Layout";
 import PostContent from "../../components/PostContent";
 
 export async function getStaticPaths() {
-  const paths = fs
-    .readdirSync(path.join(process.cwd(), "content/datasets"))
-    .map((fileName) => {
-      const trimmedName = fileName.substring(0, fileName.length - 3);
-      return {
-        params: { slug: trimmedName },
-      };
-    });
+  const paths = "dsfa";
 
   return {
     paths,

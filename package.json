@@ -10,14 +10,17 @@
   },
   "dependencies": {
     "dayjs": "^1.10.7",
+    "gray-matter": "^4.0.3",
     "netlify-cms-app": "^2.15.41",
     "next": "11.1.2",
+    "next-mdx-remote": "^3.0.5",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-katex": "^2.0.2",
+    "react-latex": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",
-    "eslint-config-next": "11.1.2",
-    "frontmatter-markdown-loader": "^3.6.3"
+    "eslint-config-next": "11.1.2"
   }
 }

@@ -1,25 +1,23 @@
+import fs from "fs";
+import path from "path";
 import Layout from "../../components/Layout";
 import Image from "next/image";
 import Link from "next/link";
 import IndexCard from "../../components/IndexCard";
-
-const importPosts = async () => {
-  const markdownFiles = require
-    .context("../../content/blog", false, /\.md$/)
-    .keys()
-    .map((relativePath) => relativePath.substring(2));
-
-  return Promise.all(
-    markdownFiles.map(async (path) => {
-      const markdown = await import(`../../content/blog/${path}`);
-      return { ...markdown, slug: path.substring(0, path.length - 3) };
-    })
-  );
-};
+import { blogPostsPaths, BLOG_POSTS_PATH } from "../../utils/mdxUtils";
+import matter from "gray-matter";
+import Latex from "react-latex";
+import "katex/dist/katex.min.css";
 
 export async function getStaticProps() {
-  const postsList = await importPosts();
-
+  const postsList = blogPostsPaths.map((slug) => {
+    const source = fs.readFileSync(path.join(BLOG_POSTS_PATH, slug));
+    const { data } = matter(source);
+    return {
+      data,
+      slug,
+    };
+  });
   return {
     props: {
       postsList,
@@ -30,6 +28,14 @@ export async function getStaticProps() {
 export default function BlogIndex({ postsList }) {
   return (
     <Layout>
+      <html>
+        <head>
+          <link
+            href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css"
+            rel="stylesheet"
+          />
+        </head>
+      </html>
       <div className="blogIndex">
         <div>
           <h2>Blog</h2>
@@ -38,10 +44,10 @@ export default function BlogIndex({ postsList }) {
           {postsList.map((blogPost) => (
             <Link href={`blog/${encodeURIComponent(blogPost.slug)}`} passHref>
               <IndexCard>
-                {blogPost.attributes.cover && (
+                {blogPost.data.cover && (
                   <Image
-                    src={blogPost.attributes.cover.substring(
-                      blogPost.attributes.cover.indexOf("/")
+                    src={blogPost.data.cover.substring(
+                      blogPost.data.cover.indexOf("/")
                     )}
                     layout="responsive"
                     width="200px"
@@ -49,7 +55,7 @@ export default function BlogIndex({ postsList }) {
                   />
                 )}
                 <div className="cardMeta">
-                  <h3>{blogPost.attributes.title}</h3>
+                  <h3>{blogPost.data.title}</h3>
                 </div>
               </IndexCard>
             </Link>

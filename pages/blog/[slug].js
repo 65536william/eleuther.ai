@@ -1,67 +1,68 @@
-import fs from "fs";
 import path from "path";
 import dayjs from "dayjs";
+import fs from "fs";
+import matter from "gray-matter";
+import { serialize } from "next-mdx-remote/serialize";
+import dynamic from "next/dynamic";
+import "katex/dist/katex.min.css";
 
 import Layout from "../../components/Layout";
 import PostContent from "../../components/PostContent";
 import PostHeader from "../../components/PostHeader";
 import PostMeta from "../../components/PostMeta";
 
-export async function getStaticPaths() {
-  const paths = fs
-    .readdirSync(path.join(process.cwd(), "content/blog"))
-    .map((fileName) => {
-      const trimmedName = fileName.substring(
-        0,
-        fileName.length - (fileName.length - fileName.indexOf("."))
-      );
-      return {
-        params: {
-          slug: trimmedName,
-        },
-      };
-    });
+import { blogPostsPaths, BLOG_POSTS_PATH } from "../../utils/mdxUtils";
+import { MDXRemote } from "next-mdx-remote";
+import { InlineMath, BlockMath } from "react-katex";
+
+export const getStaticPaths = async () => {
+  const paths = blogPostsPaths
+    .map((path) => path.replace(/\.mdx?$/, ""))
+    .map((slug) => ({ params: { slug } }));
 
   return {
     paths,
     fallback: false,
   };
-}
+};
 
 export async function getStaticProps({ params }) {
-  const { slug } = params;
-  const filePath = fs
-    .readdirSync(path.join(process.cwd(), "content/blog"))
-    .filter(
-      (x) => x.indexOf(slug) === 0 && x.split("")[slug.length] === "."
-    )[0];
-  const extension = filePath.substring(slug.length, filePath.length);
-  const post = await import(`../../content/blog/${slug}${extension}`).catch(
-    () => null
-  );
+  const blogPostPath = path.join(BLOG_POSTS_PATH, `${params.slug}.mdx`);
+  const source = fs.readFileSync(blogPostPath);
+
+  const { content, data } = matter(source);
+
+  const mdxSource = await serialize(content, {
+    scope: data,
+  });
 
   return {
     props: {
-      post: post.default,
+      source: mdxSource,
+      frontMatter: data,
     },
   };
 }
 
-export default function BlogSlug({ post }) {
-  const { html, attributes } = post;
+const components = {
+  InlineMath,
+  BlockMath,
+};
+
+export default function BlogSlug({ source, frontMatter }) {
   return (
     <Layout>
       <div className="postgrid">
         <PostHeader
-          title={attributes.title}
-          subtitle={attributes.description}
+          title={frontMatter.title}
+          subtitle={frontMatter.description}
         />
         <PostMeta
-          date={dayjs(attributes.date).format("DD MMMM, YYYY")}
-          authors={attributes.authors}
+          date={dayjs(frontMatter.date).format("DD MMMM, YYYY")}
+          authors={frontMatter.authors}
         />
       </div>
-      <PostContent html={html} />
+      <MDXRemote {...source} components={components} />
       <style jsx>{`
         .postgrid {
           display: flex;

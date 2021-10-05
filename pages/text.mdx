@@ -22,7 +22,7 @@ Rotary Positional Embedding (RoPE) is a new type of position encoding that unifi
 
 Since Vaswani et al., 2017 [16] there have been many schemes introduced for encoding positional information in transformers. When applying self-attention to a given domain, the choice of position encoding typically involves tradeoffs between simplicity, flexibility, and efficiency. For example, learned absolute positional encoding is very simple, but may not generalize and are not always particularly meaningful due to the common practices [1, 3, 9, 15] of packing short sentences and phrases together in a single context and breaking up sentences across contexts.
 
-Another major limitation of existing methods is that they do not work with efficient transformers. Methods like T5's relative positional bias [10] require constructing the full <InlineMath math="N \times N" /> attention matrix between positions, which is not possible when using many of the efficient alternatives to softmax attention, including kernelized variants like FAVOR+ [2].
+Another major limitation of existing methods is that they do not work with efficient transformers. Methods like T5's relative positional bias [10] require constructing the full <Latex>$N \times N$</Latex> attention matrix between positions, which is not possible when using many of the efficient alternatives to softmax attention, including kernelized variants like FAVOR+ [2].
 
 A principled, easy to implement, and generally-applicable method for relative position encoding---one that works for both vanilla and “efficient” attention---is of great interest. Rotary Positional Embedding (RoPE) is designed to address this need.
 
@@ -32,22 +32,24 @@ In this section we introduce and derive the rotary positional embedding. We begi
 
 ### Intuition
 
-We would like to find a positional encoding function <InlineMath math="f(\mathbf{x}, \ell)"/> for an item <InlineMath math="\mathbf{x}" /> and its position <InlineMath math="\ell" /> such that, for two items <InlineMath math="\mathbf{q}" /> and <InlineMath math="\mathbf{k}" /> at positions <InlineMath math="m" /> and <InlineMath math="n" />, the inner product between <InlineMath math="f(\mathbf{q}, m)" /> and <InlineMath math="f(\mathbf{k}, n)" /> is sensitive only to the values of <InlineMath math="\mathbf{q}" />, <InlineMath math="\mathbf{k}" />, and their relative position <InlineMath math="m-n" />. This is related in spirit to the kernel trick: we are searching for a feature map such that its kernel has certain properties. A key piece of information is the geometric definition of the dot product between Euclidean vectors: <InlineMath math="\mathbf{q} \cdot \mathbf{k} = \lVert \mathbf{q} \rVert \lVert \mathbf{k} \rVert \cos(\theta\_{qk})"/>.
+We would like to find a positional encoding function <Latex>$f(\mathbf{x}, \ell)$</Latex> for an item <Latex>$\mathbf{x}$</Latex> and its position <Latex>$\ell$</Latex> such that, for two items <Latex>$\mathbf{q}$</Latex> and <Latex>$\mathbf{k}$</Latex> at positions <Latex>$m$</Latex> and <Latex>$n$</Latex>, the inner product between <Latex>$f(\mathbf{q}, m)$</Latex> and <Latex>$f(\mathbf{k}, n)$</Latex> is sensitive only to the values of <Latex>$\mathbf{q}$</Latex>, <Latex>$\mathbf{k}$</Latex>, and their relative position <Latex>$m-n$</Latex>. This is related in spirit to the kernel trick: we are searching for a feature map such that its kernel has certain properties. A key piece of information is the geometric definition of the dot product between Euclidean vectors: <Latex>$\mathbf{q} \cdot \mathbf{k} = \lVert \mathbf{q} \rVert \lVert \mathbf{k} \rVert \cos(\theta_{qk})$</Latex>.
 
 In plain English, the dot product between two vectors is a function of the magnitude of individual vectors and the angle between them.
 With this in mind, the intuition behind RoPE is that we can represent the token embeddings as complex numbers and their positions as pure rotations that we apply to them. If we shift both the query and key by the same amount, changing absolute position but not relative position, this will lead both representations to be additionally rotated in the same manner---as we will see in the derivation---thus the angle between them will remain unchanged and thus the dot product will also remain unchanged. By exploiting the nature of rotations, the dot product used in self-attention will have the property we are looking for, preserving relative positional information while discarding absolute position.
 
-The following is an example illustrating the core idea of RoPE—a more rigorous derivation is presented in a subsequent section. Some arbitrary <InlineMath math="0 < \varepsilon \leq \frac \pi {2N}" /> is chosen, where <InlineMath math="N" /> is the maximum sequence length. When viewed elementwise on <InlineMath math="\mathbf{q}" /> and <InlineMath math="\mathbf{k}" />, with <InlineMath math="j" /> as the element index, RoPE can be viewed as follows:
+The following is an example illustrating the core idea of RoPE—a more rigorous derivation is presented in a subsequent section. Some arbitrary <Latex>$0 < \varepsilon \leq \frac \pi {2N}$</Latex> is chosen, where <Latex>$N$</Latex> is the maximum sequence length. When viewed elementwise on <Latex>$\mathbf{q}$</Latex> and <Latex>$\mathbf{k}$</Latex>, with <Latex>$j$</Latex> as the element index, RoPE can be viewed as follows:
 
-<BlockMath
-  math="\begin{aligned}
+<Latex>
+$$
+\begin{align}
     \mathrm{RoPE}(x, m) &= xe^{mi\varepsilon} \\\\
     \langle \mathrm{RoPE}(q_j, m), \mathrm{RoPE}(k_j, n)\rangle &= \langle q_j e^{mi\varepsilon}, k_j e^{ni\varepsilon} \rangle \\\\
     &= q_j k_j e^{mi\varepsilon} \overline{e^{ni\varepsilon}} \\\\
     &= q_j k_j e^{(m - n)i\varepsilon} \\\\
     &= \mathrm{RoPE}(q_j k_j, m - n)
-  \end{aligned}"
-/>
+\end{align}
+$$
+</Latex>
 
 ### Visual Intuition
 
@@ -66,61 +68,57 @@ As the wave travels through the waveplate, we can see how the magnitude of the w
 
 We begin with absolute positional information: for each token, we know where it is in the sequence. However, dot products (and therefore attention) do not preserve absolute positional information, so if we encode that positional information in the absolute position of the embeddings, we will lose a significant amount of information. On the other hand, dot products do preserve relative position, so if we can encode the absolute positional information into the token embeddings in a way that only leverages relative positional information, that will be preserved by the attention function.
 
-While it is common in machine learning to restrict our attention to the real numbers, for rotary embeddings it is mathematically more convenient to use the complex numbers as the base field for our space. Instead of working in the usual <InlineMath math="\mathbb{R}^d" />, we will work in <InlineMath math="\mathbb{C}^{d/2}" /> by considering consecutive pairs of elements of the query and key vectors to be a single complex number. Specifically, instead of viewing <InlineMath math="\mathbf{q}=(q*1,q_2,q_3,q_4,\ldots,q*{d})" /> as a <InlineMath math="d" />-dimensional real vector we view it as <InlineMath math="\mathbf{q}=(q*1+iq_2, q_3+iq_4,\ldots q*{d-1} + iq\_{d})\in\mathbb{C}^{d/2}" />. As we will see, casting it in this fashion will make discussing the rotary embeddings easier. If <InlineMath math="d" /> is odd, we can pad it with a dummy coordinate to ensure things line up correctly. Alternatively, we can simply increase <InlineMath math="d" /> by one.
+While it is common in machine learning to restrict our attention to the real numbers, for rotary embeddings it is mathematically more convenient to use the complex numbers as the base field for our space. Instead of working in the usual <Latex>$\mathbb{R}^d$</Latex>, we will work in <Latex>$\mathbb{C}^{d/2}$</Latex> by considering consecutive pairs of elements of the query and key vectors to be a single complex number. Specifically, instead of viewing <Latex>$\mathbf{q}=(q_1,q_2,q_3,q_4,\ldots,q_{d})$</Latex> as a <Latex>$d$</Latex>-dimensional real vector we view it as <Latex>$\mathbf{q}=(q_1+iq_2, q_3+iq_4,\ldots q_{d-1} + iq_{d})\in\mathbb{C}^{d/2}$</Latex>. As we will see, casting it in this fashion will make discussing the rotary embeddings easier. If <Latex>$d$</Latex> is odd, we can pad it with a dummy coordinate to ensure things line up correctly. Alternatively, we can simply increase <Latex>$d$</Latex> by one.
 
-Let <InlineMath math="\mathbf{q}" /> and <InlineMath math="\mathbf{k}" /> be query and key vectors respectively and let <InlineMath math="m" /> and <InlineMath math="n" /> be the absolute positions of the corresponding tokens. Let <InlineMath math="f(\mathbf{x}, \ell)" /> be the function that takes the token embedding <InlineMath math="\mathbf{x}" /> in position <InlineMath math="\ell" /> and outputs a new embedding that contains (in some fashion) the relative positional information. Our goal is to find a "nice" function <InlineMath math="f" /> that does this. Once the positional information is encoded, we need to compute the inner product like so:
+Let <Latex>$\mathbf{q}$</Latex> and <Latex>$\mathbf{k}$</Latex> be query and key vectors respectively and let <Latex>$m$</Latex> and <Latex>$n$</Latex> be the absolute positions of the corresponding tokens. Let <Latex>$f(\mathbf{x}, \ell)$</Latex> be the function that takes the token embedding <Latex>$\mathbf{x}$</Latex> in position <Latex>$\ell$</Latex> and outputs a new embedding that contains (in some fashion) the relative positional information. Our goal is to find a "nice" function <Latex>$f$</Latex> that does this. Once the positional information is encoded, we need to compute the inner product like so:
 
-<BlockMath
-  math="\langle f(\mathbf{q}, m),f(\mathbf{k},n) \rangle = g(\mathbf{q},
-  \mathbf{k}, m - n)"
-/>
+<Latex>
+  $$\label{fg}\langle f(\mathbf{q}, m),f(\mathbf{k},n) \rangle = g(\mathbf{q},
+  \mathbf{k}, m - n)$$
+</Latex>
 
-where <InlineMath math="g(\mathbf{q},\mathbf{k},m-n)" /> now represents the pre-softmax logit of the usual attention equation. Writing these three functions in exponential form gives
+where <Latex>$g(\mathbf{q},\mathbf{k},m-n)$</Latex> now represents the pre-softmax logit of the usual attention equation. Writing these three functions in exponential form gives
 
-<BlockMath
-  math="\begin{aligned}
+<Latex>$$
+\begin{align*}
     f(\mathbf{q}, m) &= R_f(\mathbf{q}, m)e^{i\Theta_f(\mathbf{q}, m)}\\\\
     f(\mathbf{k}, n) &= R_f(\mathbf{k}, n)e^{i\Theta_f(\mathbf{k}, n)}\\\\
     g(\mathbf{q}, \mathbf{k}, m - n) &= R_g(\mathbf{q}, \mathbf{k}, m - n)e^{i\Theta_g(\mathbf{q}, \mathbf{k}, m - n)}
-\end{aligned}"
-/>
+\end{align*}
+$$</Latex>
 
 Computing the inner product and equating corresponding components yields
 
-<BlockMath
-  math="
-  \begin{aligned}
-  R_f(\mathbf{q}, m) R_f(\mathbf{k}, n) &= R_g(\mathbf{q}, \mathbf{k}, m - n)\\\\
-  \Theta_f(\mathbf{q}, m) - \Theta_f(\mathbf{k}, n) &= \Theta_g(\mathbf{q}, \mathbf
-  {k}, m - n)\\\\ \end{aligned}"
-/>
+<Latex>$$
+\begin{align*}
+    R_f(\mathbf{q}, m) R_f(\mathbf{k}, n) &= R_g(\mathbf{q}, \mathbf{k}, m - n)\\\\
+    \Theta_f(\mathbf{q}, m) - \Theta_f(\mathbf{k}, n) &= \Theta_g(\mathbf{q}, \mathbf{k}, m - n)\\\\
+\end{align*}
+$$</Latex>
 
-Substituting <InlineMath math="m=n" /> and applying the initial condition <InlineMath math="f(\mathbf{x}, 0) = \mathbf{x}" /> gives
+Substituting <Latex>$m=n$</Latex> and applying the initial condition <Latex>$f(\mathbf{x}, 0) = \mathbf{x}$</Latex> gives
 
-<BlockMath
-  math="
-  R_f(\mathbf{q}, m) R_f(\mathbf{k}, m) = R_g(\mathbf{q}, \mathbf{k}, 0) =
-  R_f(\mathbf{q}, 0) R_f(\mathbf{k}, 0) = \mathbf{q}\mathbf{k}"
-/>
+<Latex>
+  $$R_f(\mathbf{q}, m) R_f(\mathbf{k}, m) = R_g(\mathbf{q}, \mathbf{k}, 0) =
+  R_f(\mathbf{q}, 0) R_f(\mathbf{k}, 0) = \mathbf{q}\mathbf{k}$$
+</Latex>
 
-As the prior equation is valid for all <InlineMath math="m" />, it means that <InlineMath math="R_f" /> is independent of the value of <InlineMath math="m" />, so we can set <InlineMath math="R_f(\mathbf{x}, y) = \mathbf{x}" />. Similarly, if we denote <InlineMath math="\Theta(\mathbf{x}) = \Theta_f(\mathbf{x}, 0)" /> we obtain <BlockMath math="\Theta_f(\mathbf{q}, m) - \Theta_f(\mathbf{k}, m) = \Theta_g(\mathbf{q}, \mathbf{k}, 0) = \Theta_f(\mathbf{q}, 0) - \Theta_f(\mathbf{k}, 0) = \Theta(\mathbf{q}) - \Theta(\mathbf{k})" /> which implies that <InlineMath math="\Theta_f(\mathbf{q}, m) - \Theta(\mathbf{q}) = \Theta_f(\mathbf{k}, m) - \Theta(\mathbf{k})" /> for all <InlineMath math="\mathbf{q},\mathbf{k},m" />. This allows us to decompose <. math="\Theta_f"> as <InlineMath math="\Theta_f(\mathbf{x}, y) = \Theta(\mathbf{x}) + \varphi(y)" />. Examining the case of <InlineMath math="m = n + 1" /> reveals that
+As the prior equation is valid for all <Latex>$m$</Latex>, it means that <Latex>$R_f$</Latex> is independent of the value of <Latex>$m$</Latex>, so we can set <Latex>$R_f(\mathbf{x}, y) = \mathbf{x}$</Latex>. Similarly, if we denote <Latex>$\Theta(\mathbf{x}) = \Theta_f(\mathbf{x}, 0)$</Latex> we obtain <Latex>$$\Theta_f(\mathbf{q}, m) - \Theta_f(\mathbf{k}, m) = \Theta_g(\mathbf{q}, \mathbf{k}, 0) = \Theta_f(\mathbf{q}, 0) - \Theta_f(\mathbf{k}, 0) = \Theta(\mathbf{q}) - \Theta(\mathbf{k})$$</Latex> which implies that <Latex>$\Theta_f(\mathbf{q}, m) - \Theta(\mathbf{q}) = \Theta_f(\mathbf{k}, m) - \Theta(\mathbf{k})$</Latex> for all <Latex>$\mathbf{q},\mathbf{k},m$</Latex>. This allows us to decompose <Latex>$\Theta_f$</Latex> as <Latex>$\Theta_f(\mathbf{x}, y) = \Theta(\mathbf{x}) + \varphi(y)$</Latex>. Examining the case of <Latex>$m = n + 1$</Latex> reveals that
 
-<BlockMath
-  math="
-  \varphi(m)-\varphi(m-1) = \Theta_g(\mathbf{q}, \mathbf{k}, 1) + \Theta(\mathbf
-  {q}) - \Theta(\mathbf{k})"
-/>
+<Latex>
+  $$\varphi(m)-\varphi(m-1) = \Theta_g(\mathbf{q}, \mathbf{k}, 1) +
+  \Theta(\mathbf{q}) - \Theta(\mathbf{k})$$
+</Latex>
 
-Since the right-hand side does not depend on <InlineMath math="m" />, the left hand side must not either and so <InlineMath math="\varphi" /> is an arithmetic progression. Setting the initial values <InlineMath math="\varphi(0)=0" /> and <InlineMath math="\varphi(1)=\theta" />, we have <InlineMath math="\varphi(m)=m\theta" />.
+Since the right-hand side does not depend on <Latex>$m$</Latex>, the left hand side must not either and so <Latex>$\varphi$</Latex> is an arithmetic progression. Setting the initial values <Latex>$\varphi(0)=0$</Latex> and <Latex>$\varphi(1)=\theta$</Latex>, we have <Latex>$\varphi(m)=m\theta$</Latex>.
 
 Putting all of these pieces together, we get the final formula for the rotary positional embedding:
 
-<BlockMath math="f(\mathbf{q}, m) = R_f(\mathbf{q}, m)e^{i\Theta_f(\mathbf{q}, m)}=\mathbf{q}e^{i(\Theta(\mathbf{q})+m\mathbf{\theta})} = \sum_{j=1}^{d/2} q_je^{im\theta_j} \vec{e_j}" />
+<Latex>$$f(\mathbf{q}, m) = R_f(\mathbf{q}, m)e^{i\Theta_f(\mathbf{q}, m)}=\mathbf{q}e^{i(\Theta(\mathbf{q})+m\mathbf{\theta})} = \sum_{j=1}^{d/2} q_je^{im\theta_j} \vec{e_j}$$</Latex>
 
-and likewise for <InlineMath math="\mathbf{k}" />. Since computers tend to like real numbers and matrices more than complex numbers, its convenient to convert this expression into the matrix equation
+and likewise for <Latex>$\mathbf{k}$</Latex>. Since computers tend to like real numbers and matrices more than complex numbers, its convenient to convert this expression into the matrix equation
 
-<BlockMath
-  math="
+<Latex>$$
     f(\mathbf{q}, m) =
     \begin{pmatrix}
 	    M_1 & & & \\\\
@@ -133,23 +131,22 @@ and likewise for <InlineMath math="\mathbf{k}" />. Since computers tend to like 
 	   q_2\\\\
 	   \vdots\\\\
 	   q_d
-    \end{pmatrix} = \mathbf{\Theta_m Q_m} = \mathbf{\Theta_m W_q X_m}"
-/>
+    \end{pmatrix} = \mathbf{\Theta_m Q_m} = \mathbf{\Theta_m W_q X_m}
+$$</Latex>
 
-where <InlineMath math="M_j=\begin{pmatrix}\cos m\theta_j & -\sin m\theta_j \\\sin m\theta_j & \cos m\theta_j\end{pmatrix}" />, <InlineMath math="\mathbf{\Theta_m}" /> is the block diagonal rotation matrix, <InlineMath math="\mathbf{W_q}" /> is the learned query weights, and <InlineMath math="\mathbf{X_m}" /> is the embedding of the <InlineMath math="m" /> token. Again, we also have the corresponding equation for <InlineMath math="\mathbf{k}" />.
+where <Latex>$M_j=\begin{pmatrix}\cos m\theta_j & -\sin m\theta_j \\\sin m\theta_j & \cos m\theta_j\end{pmatrix}$</Latex>, <Latex>$\mathbf{\Theta_m}$</Latex> is the block diagonal rotation matrix, <Latex>$\mathbf{W_q}$</Latex> is the learned query weights, and <Latex>$\mathbf{X_m}$</Latex> is the embedding of the <Latex>$m$</Latex> token. Again, we also have the corresponding equation for <Latex>$\mathbf{k}$</Latex>.
 
 ### Extension to multiple dimensions
 
-With relative ease RoPE can be extended into the multidimensional case. To represent two dimensions, two independent 1-dimensional rotary embeddings can be used. To implement this, we can split each of <InlineMath math="\mathbf{q}" /> and <InlineMath math="\mathbf{k}" /> in half and apply rotary piece-wise as follows:
+With relative ease RoPE can be extended into the multidimensional case. To represent two dimensions, two independent 1-dimensional rotary embeddings can be used. To implement this, we can split each of <Latex>$\mathbf{q}$</Latex> and <Latex>$\mathbf{k}$</Latex> in half and apply rotary piece-wise as follows:
 
-<BlockMath
-  math="
-\begin{aligned}
+<Latex>$$
+\begin{align*}
     \langle f(\mathbf{q}, m, i),f(\mathbf{k}, n, j) \rangle &= \langle f_1(\mathbf{q}_{:d/2}, m),f_1(\mathbf{k}_{:d/2}, n) \rangle + \langle f_2(\mathbf{q}_{d/2:}, i),f_2(\mathbf{k}_{d/2:}, j) \rangle \\\\
     &= g_1(\mathbf{q}_{:d/2}, \mathbf{k}_{:d/2}, m - n) + g_2(\mathbf{q}_{d/2:}, \mathbf{k}_{d/2:}, i - j) \\\\
     &= g(\mathbf{q}, \mathbf{k}, m - n, i - j)
-\end{aligned}"
-/>
+\end{align*}
+$$</Latex>
 
 This formulation can also be further extended to data of an arbitrary number of dimensions. This sort of multi-dimensional relative coding would let us, for example, implement relative timing and relative pitch embeddings similar to Music Transformer [4] in a drastically simpler manner. More generally, we believe there is potentially a large class of invariances that first-principles positional codes like RoPE may enable us to capture.
 
@@ -158,7 +155,7 @@ This formulation can also be further extended to data of an arbitrary number of 
 A response many of us at EleutherAI had when first coming across this was "how does this differ from sinusoidal embeddings," so we feel it is worth discussing this comparison. There are two ways that rotary embeddings are different from sinusoidal embeddings:
 
 1. Sinusoidal embeddings apply to each coordinate individually, while rotary embeddings mix pairs of coordinates
-2. Sinusoidal embeddings add a <InlineMath math="\cos(m\theta)" /> or <InlineMath math="\sin(m\theta)" /> term, while rotary embeddings use a multiplicative factor.
+2. Sinusoidal embeddings add a <Latex>$\cos(m\theta)$</Latex> or <Latex>$\sin(m\theta)$</Latex> term, while rotary embeddings use a multiplicative factor.
 
 ## Okay, what About in Practice?
 
@@ -307,7 +304,7 @@ In smaller scale tests, we have also put RoPE head to head against other alterna
 
 ### Runtime
 
-In general, we find that the runtime cost of rotary embeddings is fairly negligible. With the above implementation, we find that applying the rotary embeddings is naively about 4-5x the cost of applying additive positional embeddings. With the addition of a fusing optimizer like Torchscript, the runtime can be reduced to about 2-2.5x the runtime of additive positional embeddings. Concretely, for query and key tensors of shape <InlineMath math="[2048, 16, 12, 64]" />, applying rotary embeddings take 5.3 milliseconds, while applying additive positional embeddings takes 2.1 milliseconds.
+In general, we find that the runtime cost of rotary embeddings is fairly negligible. With the above implementation, we find that applying the rotary embeddings is naively about 4-5x the cost of applying additive positional embeddings. With the addition of a fusing optimizer like Torchscript, the runtime can be reduced to about 2-2.5x the runtime of additive positional embeddings. Concretely, for query and key tensors of shape <Latex>$[2048, 16, 12, 64]$</Latex>, applying rotary embeddings take 5.3 milliseconds, while applying additive positional embeddings takes 2.1 milliseconds.
 
 Unlike standard positional embeddings, however, rotary embeddings must be applied at every layer. As large transformer models are typically dominated by matrix multiplies, we find that the overall overhead remains negligible. With fusion, we find that rotary embeddings impose a 1-3\% overhead across a range of transformer sizes.
 
