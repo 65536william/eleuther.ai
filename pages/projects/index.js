@@ -1,23 +1,25 @@
+import fs from "fs";
+import path from "path";
 import Layout from "../../components/Layout";
-import Image from "next/image";
-
-const importPosts = async () => {
-  const markdownFiles = require
-    .context("../../content/projects", false, /\.md$/)
-    .keys()
-    .map((relativePath) => relativePath.substring(2));
-
-  return Promise.all(
-    markdownFiles.map(async (path) => {
-      const markdown = await import(`../../content/projects/${path}`);
-      return { ...markdown, slug: path.substring(0, path.length - 3) };
-    })
-  );
-};
+import IndexWrapper from "../../components/IndexWrapper";
+import matter from "gray-matter";
+import CardGrid from "../../components/CardGrid";
 
 export async function getStaticProps() {
-  const postsList = await importPosts();
-
+  const postsList = fs
+    .readdirSync(path.join(process.cwd(), "content/projects"))
+    // Only include md(x) files
+    .filter((path) => /\.mdx?$/.test(path))
+    .map((slug) => {
+      const source = fs.readFileSync(
+        path.join(path.join(process.cwd(), "content/projects"), slug)
+      );
+      const { data } = matter(source);
+      return {
+        data,
+        slug,
+      };
+    });
   return {
     props: {
       postsList,
@@ -28,9 +30,9 @@ export async function getStaticProps() {
 export default function ProjectsIndex({ postsList }) {
   return (
     <Layout>
-      <div>
-        <h1>Projects Index</h1>
-      </div>
+      <IndexWrapper title="Projects">
+        <CardGrid postArray={postsList} />
+      </IndexWrapper>
     </Layout>
   );
 }

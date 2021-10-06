@@ -8,16 +8,16 @@ export default function Header() {
         <Link href="/blog">
           <a>Blog</a>
         </Link>
-        <Link href="/">
+        <Link href="/projects">
           <a>Projects</a>
         </Link>
-        <Link href="/">
+        <Link href="/publications">
           <a>Publications</a>
         </Link>
-        <Link href="/">
+        <Link href="/datasets">
           <a>Datasets</a>
         </Link>
-        <Link href="/">
+        <Link href="/models">
           <a>Models</a>
         </Link>
       </nav>
@@ -27,10 +27,10 @@ export default function Header() {
           align-items: center;
           justify-content: space-between;
           margin: 5vh 10vw;
-          font-family: "Epilogue";
         }
         h1 {
           font-weight: bold;
+          font-family: "Epilogue";
         }
         nav {
           width: 50%;
