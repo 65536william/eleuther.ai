@@ -62,7 +62,9 @@ export default function BlogSlug({ source, frontMatter }) {
           authors={frontMatter.authors}
         />
       </div>
-      <MDXRemote {...source} components={components} />
+      <PostContent>
+        <MDXRemote {...source} components={components} />
+      </PostContent>
       <style jsx>{`
         .postgrid {
           display: flex;

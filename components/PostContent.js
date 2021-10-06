@@ -1,7 +1,7 @@
-export default function PostContent({ html }) {
+export default function PostContent({ children }) {
   return (
     <>
-      <article dangerouslySetInnerHTML={{ __html: html }} />
+      <article>{children}</article>
       <style jsx>{`
         article {
           margin: 0 5vw;
