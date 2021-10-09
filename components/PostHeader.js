@@ -8,15 +8,11 @@ export default function PostHeader({ title, subtitle, authors }) {
       </div>
       <style jsx>{`
         .postheader {
-          margin: 5vh 5vw;
+          margin: 0 5vw 5vh;
           width: 75%;
         }
         h1 {
           font-family: "Epilogue";
-          margin-bottom: 0.75%;
-        }
-        h2 {
-          margin-bottom: 0.75%;
         }
         .authorsList {
           display: flex;

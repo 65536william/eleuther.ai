@@ -3,7 +3,9 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header>
-      <h1>EleutherAI</h1>
+      <Link href="/">
+        <h1>EleutherAI</h1>
+      </Link>
       <nav>
         <Link href="/blog">
           <a>Blog</a>

@@ -1,7 +1,10 @@
+import GenericCitation from "./GenericCitation";
+
 export default function PostContent({ children }) {
   return (
     <>
       <article>{children}</article>
+      <GenericCitation frontmatter={children.props.scope} />
       <style jsx>{`
         article {
           margin: 0 5vw;

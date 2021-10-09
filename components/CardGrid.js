@@ -2,6 +2,7 @@ import Link from "next/link";
 import IndexCard from "./IndexCard";
 import Image from "next/image";
 import Tag from "./Tag";
+import categoryColors from "../styles/categoryColors";
 
 export default function CardGrid({ category, postArray }) {
   return (
@@ -43,7 +44,7 @@ export default function CardGrid({ category, postArray }) {
           padding: 1.25rem;
           display: flex;
           flex-direction: column;
-          gap: 0.5rem;
+          gap: 1.5rem;
         }
         .tagContainer {
           align-self: flex-end;
@@ -51,7 +52,7 @@ export default function CardGrid({ category, postArray }) {
         .colorBlock {
           width: 100%;
           height: 100px;
-          background-color: orange;
+          background-color: ${categoryColors[category]};
         }
         h3 {
           font-size: 1.25rem;

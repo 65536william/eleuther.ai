@@ -15,9 +15,15 @@ function getDivColor(word) {
   }
 }
 
-export default function Tag({ word }) {
+export default function Tag({ word, clickFunction }) {
+  function handleClick(word) {
+    if (clickFunction) {
+      clickFunction(word);
+    }
+  }
+
   return (
-    <div>
+    <div onClick={() => handleClick(word)}>
       <span>{word}</span>
       <style jsx>{`
         div {
