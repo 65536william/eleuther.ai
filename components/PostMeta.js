@@ -13,7 +13,7 @@ export default function PostMeta({ cover, date, authors }) {
       )}
       <div className="innerText">
         <p>{date}</p>
-        {authors.map((author) => (
+        {authors?.map((author) => (
           <p>{author}</p>
         ))}
       </div>

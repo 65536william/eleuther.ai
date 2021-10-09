@@ -3,12 +3,12 @@ import IndexCard from "./IndexCard";
 import Image from "next/image";
 import Tag from "./Tag";
 
-export default function CardGrid({ postArray }) {
+export default function CardGrid({ category, postArray }) {
   return (
     <div className="grid">
       {postArray.map((post) => (
         <Link
-          href={`blog/${encodeURIComponent(
+          href={`${encodeURIComponent(category)}/${encodeURIComponent(
             post.slug.substring(0, post.slug.indexOf("."))
           )}`}
           passHref

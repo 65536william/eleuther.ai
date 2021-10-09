@@ -30,8 +30,11 @@ export async function getStaticProps() {
 export default function ProjectsIndex({ postsList }) {
   return (
     <Layout>
-      <IndexWrapper title="Projects">
-        <CardGrid postArray={postsList} />
+      <IndexWrapper
+        title="Projects"
+        tags={postsList.map((post) => post.data.tags)}
+      >
+        <CardGrid category="projects" postArray={postsList} />
       </IndexWrapper>
     </Layout>
   );

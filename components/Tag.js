@@ -8,6 +8,8 @@ function getDivColor(word) {
       return "#a29bfe";
     case "meta":
       return "#636e72";
+    case "Bio-ML":
+      return "#fd79a8";
     default:
       return "black";
   }

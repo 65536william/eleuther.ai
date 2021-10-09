@@ -31,7 +31,7 @@ export default function BlogIndex({ postsList }) {
   return (
     <Layout>
       <IndexWrapper title="Blog" tags={postsList.map((post) => post.data.tags)}>
-        <CardGrid postArray={postsList} />
+        <CardGrid category="blog" postArray={postsList} />
       </IndexWrapper>
     </Layout>
   );
