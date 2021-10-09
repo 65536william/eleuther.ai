@@ -1,6 +1,6 @@
 function getDivColor(word) {
   switch (word) {
-    case "NLP":
+    case "Language Modeling":
       return "#74b9ff";
     case "GPT-3":
       return "#ff7675";
@@ -8,7 +8,7 @@ function getDivColor(word) {
       return "#a29bfe";
     case "meta":
       return "#636e72";
-    case "Bio-ML":
+    case "Bio ML":
       return "#fd79a8";
     default:
       return "black";

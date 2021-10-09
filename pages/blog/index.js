@@ -28,6 +28,7 @@ export async function getStaticProps() {
 }
 
 export default function BlogIndex({ postsList }) {
+  console.log(postsList);
   return (
     <Layout>
       <IndexWrapper title="Blog" tags={postsList.map((post) => post.data.tags)}>

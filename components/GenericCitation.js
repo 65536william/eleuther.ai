@@ -3,8 +3,6 @@ import { useRouter } from "next/router";
 
 export default function GenericCitation(data) {
   const router = useRouter();
-  console.log(router);
-  console.log(data);
   return (
     <div className="citation">
       <p className="block">
@@ -24,6 +22,13 @@ export default function GenericCitation(data) {
         {dayjs().format("DD MMM, YYYY")}]&#125;, year = &#123;2021&#125;&#125;
       </p>
       <style jsx>{`
+        .citation {
+          margin: 0 20vw;
+          background-color: black;
+          color: white;
+          padding: 2.5vh 2.5vw;
+          border-radius: 0.5rem;
+        }
         .block {
           font-family: monospace;
         }

@@ -1,11 +1,12 @@
 ---
 title: On the Sizes of OpenAI API Models
-date: 20210524
+date: May 24, 2021
 authors:
   - Leo Gao
-description: Using eval harness, we can deduce the sizes of OpenAI API models from their performance.
+description: Using eval harness, we can deduce the sizes of OpenAI API models
+  from their performance.
 tags:
-  - GPT-3
+  - Language Modeling
 ---
 
 OpenAI hasn't officially said anything about their API model sizes, which naturally leads to the question of just how big they are. Thankfully, we can use [eval harness](https://github.com/EleutherAI/lm-evaluation-harness) to evaluate the API models on a bunch of tasks and compare to the figures in the GPT-3 paper. Obviously since there are going to be minor differences in task implementation and OpenAI is probably fine tuning their API models all the time, the numbers don't line up exactly, but they should give a pretty good idea of the ballpark things are in.

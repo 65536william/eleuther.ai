@@ -4,7 +4,9 @@ export default function Header() {
   return (
     <header>
       <Link href="/">
-        <h1>EleutherAI</h1>
+        <a>
+          <h1>EleutherAI</h1>
+        </a>
       </Link>
       <nav>
         <Link href="/blog">
@@ -33,6 +35,7 @@ export default function Header() {
         h1 {
           font-weight: bold;
           font-family: "Epilogue";
+          font-style: normal;
         }
         nav {
           width: 50%;
@@ -43,6 +46,7 @@ export default function Header() {
           text-decoration: none;
           color: inherit;
           font-size: 1.25rem;
+          font-style: normal;
         }
       `}</style>
     </header>

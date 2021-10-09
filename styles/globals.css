@@ -145,3 +145,37 @@ p {
   font-size: 1.25rem;
   line-height: 1.25;
 }
+
+table {
+  font-size: 1.125rem;
+  line-height: 2;
+  border-style: hidden;
+}
+
+th {
+  font-family: "Epilogue";
+}
+
+th,
+td {
+  text-align: center;
+  border: thin solid rgba(0, 0, 0, 0.125);
+}
+
+tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+a {
+  font-style: italic;
+  text-decoration: underline;
+  color: inherit;
+}
+
+a:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+p {
+  margin: 1vh 0;
+}

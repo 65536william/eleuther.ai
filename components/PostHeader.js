@@ -2,7 +2,7 @@ export default function PostHeader({ title, subtitle, authors }) {
   return (
     <div className="postheader">
       <h1>{title}</h1>
-      <h2>{subtitle}</h2>
+      {subtitle && <h2>{subtitle}</h2>}
       <div className="authorsList">
         {authors && authors.map((author) => <p>{author}</p>)}
       </div>

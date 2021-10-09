@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function PostMeta({ cover, date, authors }) {
+export default function PostMeta({ cover, date, authors, important }) {
   return (
     <div className="postmeta">
       {cover && (
@@ -12,6 +12,7 @@ export default function PostMeta({ cover, date, authors }) {
         />
       )}
       <div className="innerText">
+        {important && <p>{important}</p>}
         <p>{date}</p>
         {authors?.map((author) => (
           <p>{author}</p>
