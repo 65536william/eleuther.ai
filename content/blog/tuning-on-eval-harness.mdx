@@ -4,6 +4,8 @@ date: 20210524
 authors:
   - Leo Gao
 description: We tuned GPT-Neo on eval harness tasks to see how it would change it's performance.
+tags:
+  - GPT-Neo
 ---
 
 The GPT-3 paper didn't explore fine tuning on downstream tasks, so I decided to tune Neo 2.7B for 1.1k iters on all the tasks in [eval harness](https://github.com/EleutherAI/lm-evaluation-harness) that have a train set (all at once, because tuning one model per task would have taken ages). I was quite surprised that the tuned model didn't destroy untuned 2.7B completely on all tasks, but rather from eyeballing it seems like a tossup. Interestingly, tuned seems to defeat 2.7B by quite a lot on anli, which is especially notable given that this is one task the models in the GPT-3 paper struggled on. Also, lambada and pubmedqa are included in these tables, even though it doesn't have a training set (at least for the implementation in eval harness, using the OA version of lambada), because I wanted to look at effects on sets not in the tuning, to potentially observe some catastrophic forgetting or something. Sure enough, lambada and pubmedqa scores are significantly worse on the tuned model.

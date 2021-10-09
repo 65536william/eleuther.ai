@@ -3,12 +3,14 @@ import Image from "next/image";
 export default function PostMeta({ cover, date, authors }) {
   return (
     <div className="postmeta">
-      <Image
-        src={cover.substring(cover.indexOf("/"))}
-        layout="responsive"
-        width="200px"
-        height="100px"
-      />
+      {cover && (
+        <Image
+          src={cover.substring(cover.indexOf("/"))}
+          layout="responsive"
+          width="200px"
+          height="100px"
+        />
+      )}
       <div className="innerText">
         <p>{date}</p>
         {authors.map((author) => (

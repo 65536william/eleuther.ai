@@ -1,12 +1,18 @@
 import Link from "next/link";
 import IndexCard from "./IndexCard";
 import Image from "next/image";
+import Tag from "./Tag";
 
 export default function CardGrid({ postArray }) {
   return (
     <div className="grid">
       {postArray.map((post) => (
-        <Link href={`blog/${encodeURIComponent(post.slug)}`} passHref>
+        <Link
+          href={`blog/${encodeURIComponent(
+            post.slug.substring(0, post.slug.indexOf("."))
+          )}`}
+          passHref
+        >
           <IndexCard>
             {post.data.cover ? (
               <Image
@@ -20,6 +26,9 @@ export default function CardGrid({ postArray }) {
             )}
             <div className="cardMeta">
               <h3>{post.data.title}</h3>
+              <div className="tagContainer">
+                {post.data.tags && <Tag word={post.data.tags[0]} />}
+              </div>
             </div>
           </IndexCard>
         </Link>
@@ -32,6 +41,12 @@ export default function CardGrid({ postArray }) {
         }
         .cardMeta {
           padding: 1.25rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        .tagContainer {
+          align-self: flex-end;
         }
         .colorBlock {
           width: 100%;
