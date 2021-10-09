@@ -16,12 +16,13 @@ export default function CardGrid({ category, postArray }) {
         >
           <IndexCard>
             {post.data.cover ? (
-              <Image
-                src={post.data.cover.substring(post.data.cover.indexOf("/"))}
-                layout="responsive"
-                width="200px"
-                height="100px"
-              />
+              <div className="imageContainer">
+                <Image
+                  src={post.data.cover.substring(post.data.cover.indexOf("/"))}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
             ) : (
               <div className="colorBlock">&nbsp;</div>
             )}
@@ -30,6 +31,7 @@ export default function CardGrid({ category, postArray }) {
               <div className="tagContainer">
                 {post.data.tags && <Tag word={post.data.tags[0]} />}
               </div>
+              <p className="date">{post.data.date}</p>
             </div>
           </IndexCard>
         </Link>
@@ -49,6 +51,10 @@ export default function CardGrid({ category, postArray }) {
         .tagContainer {
           align-self: flex-end;
         }
+        .imageContainer {
+          position: relative;
+          height: 10rem;
+        }
         .colorBlock {
           width: 100%;
           height: 100px;
@@ -57,6 +63,10 @@ export default function CardGrid({ category, postArray }) {
         h3 {
           font-size: 1.25rem;
           line-height: 1.25;
+        }
+        .date {
+          width: max-content;
+          font-size: 1rem;
         }
       `}</style>
     </div>

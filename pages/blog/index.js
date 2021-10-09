@@ -4,6 +4,7 @@ import Layout from "../../components/Layout";
 import IndexWrapper from "../../components/IndexWrapper";
 import matter from "gray-matter";
 import CardGrid from "../../components/CardGrid";
+import dayjs from "dayjs";
 
 export async function getStaticProps() {
   const postsList = fs
@@ -28,10 +29,14 @@ export async function getStaticProps() {
 }
 
 export default function BlogIndex({ postsList }) {
-  console.log(postsList);
   return (
     <Layout>
-      <IndexWrapper title="Blog" tags={postsList.map((post) => post.data.tags)}>
+      <IndexWrapper
+        title="Blog"
+        tags={postsList
+          .sort((a, b) => dayjs(b.data.date) - dayjs(a.data.date))
+          .map((post) => post.data.tags)}
+      >
         <CardGrid category="blog" postArray={postsList} />
       </IndexWrapper>
     </Layout>
