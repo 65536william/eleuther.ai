@@ -4,7 +4,7 @@ export default function PostHeader({ title, subtitle, authors }) {
       <h1>{title}</h1>
       {subtitle && <h2>{subtitle}</h2>}
       <div className="authorsList">
-        {authors && authors.map((author) => <p>{author}</p>)}
+        {authors && authors.map((author) => <p key={author}>{author}</p>)}
       </div>
       <style jsx>{`
         .postheader {

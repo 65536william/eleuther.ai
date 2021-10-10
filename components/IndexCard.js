@@ -19,4 +19,6 @@ const IndexCard = forwardRef(({ onClick, href, children }, ref) => {
   );
 });
 
+IndexCard.displayName = "IndexCard";
+
 export default IndexCard;

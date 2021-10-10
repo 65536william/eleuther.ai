@@ -16,7 +16,7 @@ export default function PostMeta({ cover, date, authors, important }) {
         {important && <p>{important}</p>}
         <p>{date}</p>
         {authors?.map((author) => (
-          <p>{author}</p>
+          <p key={author}>{author}</p>
         ))}
       </div>
       <style jsx>{`

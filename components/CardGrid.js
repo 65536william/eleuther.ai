@@ -13,6 +13,7 @@ export default function CardGrid({ category, postArray }) {
             post.slug.substring(0, post.slug.indexOf("."))
           )}`}
           passHref
+          key={post.slug}
         >
           <IndexCard>
             {post.data.cover ? (

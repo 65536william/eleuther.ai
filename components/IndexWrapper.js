@@ -13,6 +13,7 @@ export default function IndexWrapper({ title, tags, children }) {
           {tagList.length &&
             tagList.map((postTag) => (
               <Tag
+                key={postTag}
                 word={postTag}
                 clickFunction={(word) => {
                   setTagList([
