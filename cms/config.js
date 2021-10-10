@@ -4,8 +4,8 @@ module.exports = {
 
   // Backend configuration, in this case with git
   backend: {
-    name: "main",
-    branch: "master",
+    name: "git-gateway",
+    branch: "main",
     squash_merges: true,
   },
 
