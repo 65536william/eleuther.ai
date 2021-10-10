@@ -12,6 +12,9 @@ import PostMeta from "../../components/PostMeta";
 
 import { MDXRemote } from "next-mdx-remote";
 import { InlineMath, BlockMath } from "react-katex";
+import DiscordHighlight from "../../components/DiscordHighlight";
+import DiscordMessage from "../../components/DiscordMessage";
+import PostImage from "../../components/PostImage";
 
 export const getStaticPaths = async () => {
   const paths = fs
@@ -51,6 +54,9 @@ export async function getStaticProps({ params }) {
 const components = {
   InlineMath,
   BlockMath,
+  DiscordHighlight,
+  DiscordMessage,
+  PostImage,
 };
 
 export default function BlogSlug({ source, frontMatter }) {

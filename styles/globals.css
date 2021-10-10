@@ -141,6 +141,12 @@ h2 {
   line-height: 2;
 }
 
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: bold;
+}
+
 p {
   font-size: 1.25rem;
   line-height: 1.25;
@@ -178,4 +184,12 @@ a:hover {
 
 p {
   margin: 1vh 0;
+}
+
+br {
+  margin: 10vh 0;
+}
+
+blockquote {
+  margin-left: 2.5vw;
 }
