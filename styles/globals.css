@@ -193,3 +193,18 @@ br {
 blockquote {
   margin-left: 2.5vw;
 }
+
+ul {
+  list-style-type: circle;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ul li,
+ol li {
+  margin: 2.5vh 0;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}

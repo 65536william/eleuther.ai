@@ -5,6 +5,7 @@ export default function PostContent({ children }) {
     <>
       <article>{children}</article>
       <GenericCitation frontmatter={children.props.scope} />
+
       <style jsx>{`
         article {
           margin: 0 5vw 5vh;

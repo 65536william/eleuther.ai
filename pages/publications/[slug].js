@@ -61,6 +61,12 @@ export default function PublicationSlug({ source, frontMatter }) {
             title={frontMatter.title}
             subtitle={frontMatter.description}
           />
+          <a
+            style={{ marginLeft: "5vw", fontWeight: "bold" }}
+            href={frontMatter.link}
+          >
+            View on arXiv
+          </a>
           <PostContent>
             <MDXRemote {...source} components={components} />
           </PostContent>

@@ -4,12 +4,13 @@ export default function PostMeta({ cover, date, authors, important }) {
   return (
     <div className="postmeta">
       {cover && (
-        <Image
-          src={cover.substring(cover.indexOf("/"))}
-          layout="responsive"
-          width="200px"
-          height="100px"
-        />
+        <div className="imageContainer">
+          <Image
+            src={cover.substring(cover.indexOf("/"))}
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
       )}
       <div className="innerText">
         {important && <p>{important}</p>}
@@ -31,6 +32,10 @@ export default function PostMeta({ cover, date, authors, important }) {
         }
         .innerText {
           padding: 5%;
+        }
+        .imageContainer {
+          position: relative;
+          height: 10rem;
         }
       `}</style>
     </div>
