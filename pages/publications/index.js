@@ -1,9 +1,9 @@
 import fs from "fs";
 import path from "path";
 import Layout from "../../components/Layout";
-import IndexWrapper from "../../components/IndexWrapper";
 import matter from "gray-matter";
-import CardGrid from "../../components/CardGrid";
+import FolderGrid from "../../components/FolderGrid";
+import FoldersIndexWrapper from "../../components/FoldersIndexWrapper";
 
 export async function getStaticProps() {
   const postsList = fs
@@ -30,12 +30,12 @@ export async function getStaticProps() {
 export default function PublicationsIndex({ postsList }) {
   return (
     <Layout>
-      <IndexWrapper
+      <FoldersIndexWrapper
         title="Publications"
         tags={postsList.map((post) => post.data.tags)}
       >
-        <CardGrid category="publications" postArray={postsList} />
-      </IndexWrapper>
+        <FolderGrid category="publications" postArray={postsList} />
+      </FoldersIndexWrapper>
     </Layout>
   );
 }

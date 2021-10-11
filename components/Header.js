@@ -30,7 +30,8 @@ export default function Header() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          margin: 5vh 10vw;
+          padding: 5vh 0;
+          margin: 0 15vw;
         }
         h1 {
           font-weight: bold;

@@ -65,7 +65,9 @@ module.exports = {
         {
           label: "tags",
           name: "tags",
-          widget: "list",
+          widget: "select",
+          multiple: true,
+          options: ["GPT-Neo", "Language Modeling", "Bio ML"],
           required: true,
         },
         {

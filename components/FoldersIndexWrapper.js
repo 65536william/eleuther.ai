@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Tag from "./Tag";
 
-export default function IndexWrapper({ title, tags, children }) {
+export default function FoldersIndexWrapper({ title, tags, children }) {
   const [tagList, setTagList] = useState([...new Set(tags.flat())]);
   const [childrenPosts, setChildrenPosts] = useState(children);
 
