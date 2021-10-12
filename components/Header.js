@@ -3,11 +3,13 @@ import Link from "next/link";
 export default function Header() {
   return (
     <header>
-      <Link href="/">
-        <a>
-          <h1>EleutherAI</h1>
-        </a>
-      </Link>
+      <div>
+        <Link href="/">
+          <a>
+            <h1>EleutherAI</h1>
+          </a>
+        </Link>
+      </div>
       <nav>
         <Link href="/blog">
           <a>Blog</a>
@@ -27,16 +29,17 @@ export default function Header() {
       </nav>
       <style jsx>{`
         header {
+          height: 12.5vh;
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 5vh 0;
-          margin: 0 15vw;
+          margin: 0 5vw;
         }
         h1 {
           font-weight: bold;
           font-family: "Epilogue";
           font-style: normal;
+          line-height: 1;
         }
         nav {
           width: 50%;

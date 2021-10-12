@@ -36,13 +36,12 @@ export default function FoldersIndexWrapper({ title, tags, children }) {
       {childrenPosts}
       <style jsx>{`
         .index {
-          margin: 0 15vw;
         }
         .header {
           display: flex;
           align-items: center;
           gap: 2.5rem;
-          margin-bottom: 5vh;
+          height: 87.5vh;
         }
         .tags {
           display: flex;
@@ -50,6 +49,7 @@ export default function FoldersIndexWrapper({ title, tags, children }) {
         }
         h2 {
           font-family: "Epilogue";
+          line-height: 1;
         }
       `}</style>
     </div>

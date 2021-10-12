@@ -35,11 +35,11 @@ export default function CardGrid({ category, postArray }) {
   return (
     <div className="grid">
       {researchDomains.map((domain) => (
-        <div key={domain.accessor} className={domain.accessor}>
+        <div key={domain.accessor} className={domain.accessor + " test"}>
           <h3>{domain.title}</h3>
         </div>
       ))}
-      {/* {postArray.map((post) => (
+      {postArray.map((post) => (
         <Link
           href={`${encodeURIComponent(category)}/${encodeURIComponent(
             post.slug.substring(0, post.slug.indexOf("."))
@@ -68,12 +68,12 @@ export default function CardGrid({ category, postArray }) {
             </div>
           </IndexCard>
         </Link>
-      ))} */}
+      ))}
       <style jsx>{`
         .grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
-          gap: 5rem;
+          grid-template-rows: 50vh 50vh;
         }
         .cardMeta {
           padding: 1.25rem;

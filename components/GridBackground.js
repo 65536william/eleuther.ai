@@ -24,20 +24,22 @@ export default function GridBackground() {
       <style jsx>{`
         .columnGrid,
         .rowGrid {
-          position: fixed;
+          position: absolute;
           z-index: -10;
-          height: 100vh;
-          width: 100vw;
           display: grid;
         }
         .columnGrid {
-          grid-template-columns: 15vw repeat(6, 1fr) 15vw;
+          width: 100%;
+          grid-template-columns: 1fr 1fr;
         }
         .rowGrid {
+          width: 100%;
+          height: 100vh;
           grid-template-columns: 1fr;
-          grid-template-rows: repeat(8, 1fr);
+          grid-template-rows: 12.5vh 87.5vh 50vh 50vh 50vh 50vh;
         }
         .column {
+          height: 100vh;
           border-left: 2px solid rgba(0, 0, 0, 0.125);
         }
         .column:first-child {
