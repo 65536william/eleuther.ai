@@ -3,7 +3,10 @@ import path from "path";
 import Layout from "../../components/Layout";
 import matter from "gray-matter";
 import FolderGrid from "../../components/FolderGrid";
-import FoldersIndexWrapper from "../../components/FoldersIndexWrapper";
+import FoldersIndexHeader from "../../components/FoldersIndexHeader";
+import IndexCard from "../../components/IndexCard";
+import Image from "next/image";
+import PostCard from "../../components/PostCard";
 
 export async function getStaticProps() {
   const postsList = fs
@@ -30,12 +33,44 @@ export async function getStaticProps() {
 export default function PublicationsIndex({ postsList }) {
   return (
     <Layout>
-      <FoldersIndexWrapper
-        title="Publications"
-        tags={postsList.map((post) => post.data.tags)}
-      >
-        <FolderGrid category="publications" postArray={postsList} />
-      </FoldersIndexWrapper>
+      <div className="topDiv">
+        <FoldersIndexHeader
+          title="Publications"
+          tags={postsList.map((post) => post.data.tags)}
+        />
+        <div>
+          <h3>Breakthroughs</h3>
+          <div className="posts">
+            {postsList
+              .filter((post) => post.data.breakthrough)
+              .map((post) => (
+                <PostCard category="publications" post={post} />
+              ))}
+          </div>
+        </div>
+        <div>
+          <h3>Latest</h3>
+        </div>
+      </div>
+      <FolderGrid category="publications" postArray={postsList} />
+      <style jsx>{`
+        .topDiv {
+          height: 90vh;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        .posts {
+          display: flex;
+          flex-direction: column;
+          gap: 5vh;
+        }
+        h3 {
+          padding-top: 15vh;
+          padding-left: 2.5vw;
+          text-decoration: underline;
+          margin-bottom: 5vh;
+        }
+      `}</style>
     </Layout>
   );
 }

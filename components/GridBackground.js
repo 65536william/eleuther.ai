@@ -30,13 +30,14 @@ export default function GridBackground() {
         }
         .columnGrid {
           width: 100%;
-          grid-template-columns: 1fr 1fr;
+          height: max-content;
+          grid-template-columns: 5% 29% 2% 29% 2% 29% 5%;
         }
         .rowGrid {
           width: 100%;
-          height: 100vh;
+          height: max-content;
           grid-template-columns: 1fr;
-          grid-template-rows: 12.5vh 87.5vh 50vh 50vh 50vh 50vh;
+          grid-template-rows: 10% 90% 50% 50% 50% 50%;
         }
         .column {
           height: 100vh;

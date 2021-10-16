@@ -29,7 +29,7 @@ export default function Header() {
       </nav>
       <style jsx>{`
         header {
-          height: 12.5vh;
+          height: 10vh;
           display: flex;
           align-items: center;
           justify-content: space-between;

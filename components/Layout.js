@@ -11,6 +11,7 @@ export default function Layout({ children }) {
       <Footer />
       <style jsx>{`
         main {
+          margin: 0 5vw;
           min-height: 100vh;
         }
       `}</style>
