@@ -7,6 +7,7 @@ import categoryColors from "../styles/categoryColors";
 export default function PostCard({ category, post }) {
   return (
     <>
+      {console.log(post)}
       <Link
         href={`${encodeURIComponent(category)}/${encodeURIComponent(
           post.slug.substring(0, post.slug.indexOf("."))
@@ -35,6 +36,9 @@ export default function PostCard({ category, post }) {
       </Link>
       <style jsx>{`
         .card {
+          border: thin solid rgba(0, 0, 0, 0.05);
+        }
+        .card:hover {
           box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
         }
         .cardMeta {

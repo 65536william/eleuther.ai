@@ -3,6 +3,7 @@ import IndexCard from "./IndexCard";
 import Image from "next/image";
 import Tag from "./Tag";
 import categoryColors from "../styles/categoryColors";
+import PostCard from "../components/PostCard";
 
 const researchDomains = [
   {
@@ -40,39 +41,12 @@ export default function CardGrid({ category, postArray }) {
         </div>
       ))}
       {postArray.map((post) => (
-        <Link
-          href={`${encodeURIComponent(category)}/${encodeURIComponent(
-            post.slug.substring(0, post.slug.indexOf("."))
-          )}`}
-          passHref
-          key={post.slug}
-        >
-          <IndexCard>
-            {post.data.cover ? (
-              <div className="imageContainer">
-                <Image
-                  src={post.data.cover.substring(post.data.cover.indexOf("/"))}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </div>
-            ) : (
-              <div className="colorBlock">&nbsp;</div>
-            )}
-            <div className="cardMeta">
-              <h3>{post.data.title}</h3>
-              <div className="tagContainer">
-                {post.data.tags && <Tag word={post.data.tags[0]} />}
-              </div>
-              <p className="date">{post.data.date}</p>
-            </div>
-          </IndexCard>
-        </Link>
+        <PostCard category="publications" post={post} />
       ))}
       <style jsx>{`
         .grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           grid-template-rows: 50vh 50vh;
         }
         .cardMeta {

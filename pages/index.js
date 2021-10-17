@@ -204,12 +204,18 @@ Can I make my own version of the Pile?
             margin: 0 10vw;
           }
           h1 {
-            font-family: "Epilogue";
+            font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+              segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+              sans-serif;
+
             font-weight: bold;
             font-size: 2.5rem;
           }
           h2 {
-            font-family: "Epilogue";
+            font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+              segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+              sans-serif;
+
             font-size: 1.25rem;
           }
         `}</style>

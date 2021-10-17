@@ -5,7 +5,10 @@ export default function DiscordHighlight({ children, bright }) {
       <style jsx>{`
         span {
           border-radius: 0.5rem;
-          font-family: "Epilogue", sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+            sans-serif;
+
           font-size: 1rem;
           font-weight: bold;
           display: inline;

@@ -35,7 +35,9 @@ export default function Tag({ word, clickFunction }) {
         }
         span {
           color: white;
-          font-family: "Epilogue";
+          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+            sans-serif;
         }
       `}</style>
     </div>

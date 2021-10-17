@@ -37,7 +37,9 @@ export default function Header() {
         }
         h1 {
           font-weight: bold;
-          font-family: "Epilogue";
+          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+            sans-serif;
           font-style: normal;
           line-height: 1;
         }

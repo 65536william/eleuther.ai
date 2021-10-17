@@ -38,7 +38,7 @@ export default function PublicationsIndex({ postsList }) {
           title="Publications"
           tags={postsList.map((post) => post.data.tags)}
         />
-        <div>
+        <div className="postsColumn">
           <h3>Breakthroughs</h3>
           <div className="posts">
             {postsList
@@ -48,8 +48,16 @@ export default function PublicationsIndex({ postsList }) {
               ))}
           </div>
         </div>
-        <div>
+        <div className="postsColumn">
           <h3>Latest</h3>
+          <div className="posts">
+            {postsList
+              .sort((a, b) => b.data.date - a.data.date)
+              .splice(0, 2)
+              .map((post) => (
+                <PostCard category="publications" post={post} />
+              ))}
+          </div>
         </div>
       </div>
       <FolderGrid category="publications" postArray={postsList} />
@@ -59,16 +67,17 @@ export default function PublicationsIndex({ postsList }) {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
         }
+        .postsColumn {
+          margin: 10vh 2.5vw;
+        }
         .posts {
           display: flex;
           flex-direction: column;
           gap: 5vh;
         }
         h3 {
-          padding-top: 15vh;
-          padding-left: 2.5vw;
           text-decoration: underline;
-          margin-bottom: 5vh;
+          margin-bottom: 2.5vh;
         }
       `}</style>
     </Layout>

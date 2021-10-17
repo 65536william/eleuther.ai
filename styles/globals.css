@@ -126,7 +126,9 @@ table {
 /* EleutherAI Styling */
 
 body {
-  font-family: "Crimson Text";
+  font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman,
+    Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol;
   font-weight: 400;
 }
 
@@ -156,10 +158,6 @@ table {
   font-size: 1.125rem;
   line-height: 2;
   border-style: hidden;
-}
-
-th {
-  font-family: "Epilogue";
 }
 
 th,

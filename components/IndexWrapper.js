@@ -49,7 +49,9 @@ export default function IndexWrapper({ title, tags, children }) {
           gap: 1.25rem;
         }
         h2 {
-          font-family: "Epilogue";
+          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+            sans-serif;
         }
       `}</style>
     </div>

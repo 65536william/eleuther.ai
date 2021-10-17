@@ -40,7 +40,10 @@ export default function DiscordMessage({
         .message {
           background-color: #36393f;
           color: #dcddde;
-          font-family: "Epilogue", sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+            sans-serif;
+
           display: grid;
           grid-template-columns: 2.5rem 1fr;
           gap: 1rem;

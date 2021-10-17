@@ -6,40 +6,47 @@ export default function FoldersIndexHeader({ title, tags }) {
 
   return (
     <div className="header">
-      <h2>{title}</h2>
-      <div className="tags">
-        {tagList.length &&
-          tagList.map((postTag) => (
-            <Tag
-              key={postTag}
-              word={postTag}
-              clickFunction={(word) => {
-                setTagList([...new Set(tags.flat().filter((x) => x === word))]);
-                setChildrenPosts({
-                  ...childrenPosts,
-                  props: {
-                    ...childrenPosts.props,
-                    postArray: childrenPosts.props.postArray.filter((post) =>
-                      post.data.tags.includes(word)
-                    ),
-                  },
-                });
-              }}
-            />
-          ))}
+      <div className="content">
+        <h2 className="title">{title}</h2>
+        <div className="tags">
+          {tagList.length &&
+            tagList.map((postTag) => (
+              <Tag
+                key={postTag}
+                word={postTag}
+                clickFunction={(word) => {
+                  setTagList([
+                    ...new Set(tags.flat().filter((x) => x === word)),
+                  ]);
+                  setChildrenPosts({
+                    ...childrenPosts,
+                    props: {
+                      ...childrenPosts.props,
+                      postArray: childrenPosts.props.postArray.filter((post) =>
+                        post.data.tags.includes(word)
+                      ),
+                    },
+                  });
+                }}
+              />
+            ))}
+        </div>
       </div>
       <style jsx>{`
-        .header {
-          padding-top: 15vh;
-          padding-left: 2.5vw;
+        .content {
+          margin: 10vh 2.5vw;
         }
         .tags {
           display: flex;
           gap: 1.25rem;
         }
         h2 {
-          font-family: "Epilogue";
+          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+            sans-serif;
+
           line-height: 1;
+          margin-bottom: 1vh;
         }
       `}</style>
     </div>

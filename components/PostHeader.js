@@ -12,7 +12,9 @@ export default function PostHeader({ title, subtitle, authors }) {
           width: 75%;
         }
         h1 {
-          font-family: "Epilogue";
+          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+            sans-serif;
         }
         .authorsList {
           display: flex;

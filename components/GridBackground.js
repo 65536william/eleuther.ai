@@ -31,7 +31,7 @@ export default function GridBackground() {
         .columnGrid {
           width: 100%;
           height: max-content;
-          grid-template-columns: 5% 29% 2% 29% 2% 29% 5%;
+          grid-template-columns: 5% 30% 30% 30% 5%;
         }
         .rowGrid {
           width: 100%;
@@ -41,13 +41,13 @@ export default function GridBackground() {
         }
         .column {
           height: 100vh;
-          border-left: 2px solid rgba(0, 0, 0, 0.125);
+          border-left: 2px solid rgba(0, 0, 0, 0.05);
         }
         .column:first-child {
           border-left: none;
         }
         .row {
-          border-top: 2px solid rgba(0, 0, 0, 0.125);
+          border-top: 2px solid rgba(0, 0, 0, 0.05);
         }
         .row:first-child {
           border-top: none;
