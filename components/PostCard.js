@@ -7,7 +7,6 @@ import categoryColors from "../styles/categoryColors";
 export default function PostCard({ category, post }) {
   return (
     <>
-      {console.log(post)}
       <Link
         href={`${encodeURIComponent(category)}/${encodeURIComponent(
           post.slug.substring(0, post.slug.indexOf("."))
@@ -26,11 +25,11 @@ export default function PostCard({ category, post }) {
             </div>
           )}
           <div className="cardMeta">
-            <h3>{post.data.title}</h3>
             <div className="tagContainer">
               {post.data.tags && <Tag word={post.data.tags[0]} />}
             </div>
             <p className="date">{post.data.date}</p>
+            <h3>{post.data.title}</h3>
           </div>
         </div>
       </Link>
@@ -42,13 +41,10 @@ export default function PostCard({ category, post }) {
           box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
         }
         .cardMeta {
-          padding: 1.25rem;
+          padding: 1.25vh 1.25vw;
           display: flex;
           flex-direction: column;
-          gap: 1.5rem;
-        }
-        .tagContainer {
-          align-self: flex-end;
+          gap: 1vh;
         }
         .imageContainer {
           position: relative;
@@ -62,6 +58,7 @@ export default function PostCard({ category, post }) {
         h3 {
           font-size: 1.25rem;
           line-height: 1.25;
+          font-weight: normal;
         }
         .date {
           width: max-content;

@@ -38,16 +38,18 @@ export default function CardGrid({ category, postArray }) {
       {researchDomains.map((domain) => (
         <div key={domain.accessor} className={domain.accessor + " test"}>
           <h3>{domain.title}</h3>
+          {postArray
+            .filter((post) => post.data.tags.includes(domain.title))
+            .map((post) => (
+              <PostCard category="publications" post={post} />
+            ))}
         </div>
-      ))}
-      {postArray.map((post) => (
-        <PostCard category="publications" post={post} />
       ))}
       <style jsx>{`
         .grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: 50vh 50vh;
+          grid-template-rows: 100vh 100vh;
         }
         .cardMeta {
           padding: 1.25rem;

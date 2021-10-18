@@ -132,6 +132,16 @@ body {
   font-weight: 400;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+    helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+}
+
 h1 {
   font-size: 2.5rem;
   font-weight: bold;

@@ -31,23 +31,23 @@ export default function GridBackground() {
         .columnGrid {
           width: 100%;
           height: max-content;
-          grid-template-columns: 5% 30% 30% 30% 5%;
+          grid-template-columns: 5% 1fr 25px 1fr 25px 1fr 5%;
         }
         .rowGrid {
           width: 100%;
           height: max-content;
           grid-template-columns: 1fr;
-          grid-template-rows: 10% 90% 50% 50% 50% 50%;
+          grid-template-rows: 10% 90% 100% 100% 50% 50%;
         }
         .column {
           height: 100vh;
-          border-left: 2px solid rgba(0, 0, 0, 0.05);
+          border-left: 2px solid rgba(0, 0, 0, 0.025);
         }
         .column:first-child {
           border-left: none;
         }
         .row {
-          border-top: 2px solid rgba(0, 0, 0, 0.05);
+          border-top: 2px solid rgba(0, 0, 0, 0.025);
         }
         .row:first-child {
           border-top: none;

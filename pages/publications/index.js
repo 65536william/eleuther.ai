@@ -23,6 +23,7 @@ export async function getStaticProps() {
         slug,
       };
     });
+  console.log(postsList.length);
   return {
     props: {
       postsList,
@@ -42,9 +43,14 @@ export default function PublicationsIndex({ postsList }) {
           <h3>Breakthroughs</h3>
           <div className="posts">
             {postsList
+              .slice()
               .filter((post) => post.data.breakthrough)
               .map((post) => (
-                <PostCard category="publications" post={post} />
+                <PostCard
+                  key={post.data.title}
+                  category="publications"
+                  post={post}
+                />
               ))}
           </div>
         </div>
@@ -53,9 +59,14 @@ export default function PublicationsIndex({ postsList }) {
           <div className="posts">
             {postsList
               .sort((a, b) => b.data.date - a.data.date)
-              .splice(0, 2)
+              .slice()
+              .splice(0, 4)
               .map((post) => (
-                <PostCard category="publications" post={post} />
+                <PostCard
+                  key={post.data.title}
+                  category="publications"
+                  post={post}
+                />
               ))}
           </div>
         </div>
@@ -66,18 +77,19 @@ export default function PublicationsIndex({ postsList }) {
           height: 90vh;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
+          gap: 25px;
         }
         .postsColumn {
-          margin: 10vh 2.5vw;
+          margin: 10vh 0;
         }
         .posts {
           display: flex;
           flex-direction: column;
-          gap: 5vh;
+          gap: 25px;
         }
         h3 {
-          text-decoration: underline;
           margin-bottom: 2.5vh;
+          margin-left: 2.5vw;
         }
       `}</style>
     </Layout>
