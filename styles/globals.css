@@ -143,14 +143,14 @@ h6 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
-  line-height: 2.5;
+  line-height: 2;
 }
 
 h2 {
-  font-size: 2rem;
-  line-height: 2;
+  font-size: 1.75rem;
+  line-height: 1.75;
 }
 
 h3 {
@@ -160,12 +160,12 @@ h3 {
 }
 
 p {
-  font-size: 1.25rem;
-  line-height: 1.25;
+  font-size: 1rem;
+  line-height: 1;
 }
 
 table {
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 2;
   border-style: hidden;
 }

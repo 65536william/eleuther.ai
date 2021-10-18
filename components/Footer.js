@@ -2,20 +2,20 @@ export default function Footer() {
   return (
     <footer>
       <div>
-        <p>Blah</p>
-        <p>Blah</p>
-        <p>Blah</p>
-        <p>Blah</p>
+        <p>Blog</p>
+        <p>Projects</p>
+        <p>Publications</p>
+        <p>Datasets</p>
+        <p>Models</p>
       </div>
       <div>
-        <p>Blah</p>
-        <p>Blah</p>
-        <p>Blah</p>
-        <p>Blah</p>
-        <p>Blah</p>
-        <p>Blah</p>
+        <p>About</p>
+        <p>FAQ</p>
+        <p>Contact</p>
       </div>
-      <div>Eleuther AI.</div>
+      <div>
+        <p>Eleuther AI.</p>
+      </div>
       <style jsx>{`
         footer {
           display: grid;

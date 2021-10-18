@@ -7,6 +7,7 @@ import FoldersIndexHeader from "../../components/FoldersIndexHeader";
 import IndexCard from "../../components/IndexCard";
 import Image from "next/image";
 import PostCard from "../../components/PostCard";
+import DisplayPostsInFolders from "../../components/DisplayPostsInFolders";
 
 export async function getStaticProps() {
   const postsList = fs
@@ -31,67 +32,23 @@ export async function getStaticProps() {
   };
 }
 
+const folderTitles = [
+  "Large Language Models",
+  "Multimodal Models",
+  "Alignment and Interpretability",
+  "Biological ML",
+  "AI-Assisted Creativity",
+  "ML Theory",
+];
+
 export default function PublicationsIndex({ postsList }) {
   return (
     <Layout>
-      <div className="topDiv">
-        <FoldersIndexHeader
-          title="Publications"
-          tags={postsList.map((post) => post.data.tags)}
-        />
-        <div className="postsColumn">
-          <h3>Breakthroughs</h3>
-          <div className="posts">
-            {postsList
-              .slice()
-              .filter((post) => post.data.breakthrough)
-              .map((post) => (
-                <PostCard
-                  key={post.data.title}
-                  category="publications"
-                  post={post}
-                />
-              ))}
-          </div>
-        </div>
-        <div className="postsColumn">
-          <h3>Latest</h3>
-          <div className="posts">
-            {postsList
-              .sort((a, b) => b.data.date - a.data.date)
-              .slice()
-              .splice(0, 4)
-              .map((post) => (
-                <PostCard
-                  key={post.data.title}
-                  category="publications"
-                  post={post}
-                />
-              ))}
-          </div>
-        </div>
-      </div>
-      <FolderGrid category="publications" postArray={postsList} />
-      <style jsx>{`
-        .topDiv {
-          height: 90vh;
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 25px;
-        }
-        .postsColumn {
-          margin: 10vh 0;
-        }
-        .posts {
-          display: flex;
-          flex-direction: column;
-          gap: 25px;
-        }
-        h3 {
-          margin-bottom: 2.5vh;
-          margin-left: 2.5vw;
-        }
-      `}</style>
+      <DisplayPostsInFolders
+        title="Publications"
+        folderTitles={folderTitles}
+        postsList={postsList}
+      />
     </Layout>
   );
 }
