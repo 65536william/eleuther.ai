@@ -7,7 +7,7 @@ export default function FoldersIndexHeader({ title, tags }) {
   return (
     <div className="header">
       <div className="content">
-        <h2 className="title">{title}</h2>
+        <h2>{title}</h2>
         <div className="tags">
           {tagList.length &&
             tagList.map((postTag) => (
@@ -34,7 +34,7 @@ export default function FoldersIndexHeader({ title, tags }) {
       </div>
       <style jsx>{`
         .content {
-          margin: 10vh 2.5vw;
+          margin: 5vh 0vw;
         }
         .tags {
           display: flex;
@@ -46,7 +46,7 @@ export default function FoldersIndexHeader({ title, tags }) {
             sans-serif;
 
           line-height: 1;
-          margin-bottom: 1vh;
+          margin-bottom: 2.5vh;
         }
       `}</style>
     </div>

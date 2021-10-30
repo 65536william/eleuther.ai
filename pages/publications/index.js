@@ -2,7 +2,6 @@ import fs from "fs";
 import path from "path";
 import Layout from "../../components/Layout";
 import matter from "gray-matter";
-import FolderGrid from "../../components/FolderGrid";
 import FoldersIndexHeader from "../../components/FoldersIndexHeader";
 import IndexCard from "../../components/IndexCard";
 import Image from "next/image";
@@ -42,11 +41,14 @@ const folderTitles = [
 ];
 
 export default function PublicationsIndex({ postsList }) {
+  let folderTitles = [];
+  postsList.forEach((post) => folderTitles.push(post.data.tags[0]));
+
   return (
     <Layout>
       <DisplayPostsInFolders
         title="Publications"
-        folderTitles={folderTitles}
+        folderTitles={[...new Set(folderTitles)]}
         postsList={postsList}
       />
     </Layout>

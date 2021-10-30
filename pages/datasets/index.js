@@ -1,9 +1,8 @@
 import fs from "fs";
 import path from "path";
 import Layout from "../../components/Layout";
-import IndexWrapper from "../../components/IndexWrapper";
 import matter from "gray-matter";
-import CardGrid from "../../components/CardGrid";
+import DisplayPostsInFolders from "../../components/DisplayPostsInFolders";
 
 export async function getStaticProps() {
   const postsList = fs
@@ -28,14 +27,16 @@ export async function getStaticProps() {
 }
 
 export default function DatasetsIndex({ postsList }) {
+  let folderTitles = [];
+  postsList.forEach((post) => folderTitles.push(post.data.tags[0]));
+
   return (
     <Layout>
-      <IndexWrapper
-        title="Datasets"
-        tags={postsList.map((post) => post.data.tags)}
-      >
-        <CardGrid category="datasets" postArray={postsList} />
-      </IndexWrapper>
+      <DisplayPostsInFolders
+        title="Projects"
+        folderTitles={[...new Set(folderTitles)]}
+        postsList={postsList}
+      />
     </Layout>
   );
 }

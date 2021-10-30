@@ -1,10 +1,8 @@
 import fs from "fs";
 import path from "path";
 import Layout from "../../components/Layout";
-import IndexWrapper from "../../components/IndexWrapper";
 import matter from "gray-matter";
-import CardGrid from "../../components/CardGrid";
-import dayjs from "dayjs";
+import DisplayPostsInFolders from "../../components/DisplayPostsInFolders";
 
 export async function getStaticProps() {
   const postsList = fs
@@ -29,16 +27,15 @@ export async function getStaticProps() {
 }
 
 export default function BlogIndex({ postsList }) {
+  let folderTitles = [];
+  postsList.forEach((post) => folderTitles.push(post.data.tags[0]));
   return (
     <Layout>
-      <IndexWrapper
+      <DisplayPostsInFolders
         title="Blog"
-        tags={postsList
-          .sort((a, b) => dayjs(b.data.date) - dayjs(a.data.date))
-          .map((post) => post.data.tags)}
-      >
-        <CardGrid category="blog" postArray={postsList} />
-      </IndexWrapper>
+        folderTitles={[...new Set(folderTitles)]}
+        postsList={postsList}
+      ></DisplayPostsInFolders>
     </Layout>
   );
 }

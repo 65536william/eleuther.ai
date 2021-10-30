@@ -1,6 +1,4 @@
 import FoldersIndexHeader from "./FoldersIndexHeader";
-import PostCard from "./PostCard";
-import FolderGrid from "./FolderGrid";
 import Folder from "./Folder";
 
 export default function DisplayPostsInFolders({
@@ -29,6 +27,7 @@ export default function DisplayPostsInFolders({
         />
         {folderTitles.map((folderTitle) => (
           <Folder
+            key={folderTitle}
             title={folderTitle}
             category={category}
             postsSubset={postsList.filter((post) =>

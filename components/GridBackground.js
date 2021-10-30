@@ -9,7 +9,6 @@ export default function GridBackground() {
         <div className="column"></div>
         <div className="column"></div>
         <div className="column"></div>
-        <div className="column"></div>
       </div>
       <div className="rowGrid">
         <div className="row"></div>
@@ -22,32 +21,39 @@ export default function GridBackground() {
         <div className="row"></div>
       </div>
       <style jsx>{`
+        .grid {
+          height: 100%;
+        }
         .columnGrid,
         .rowGrid {
+          width: 100%;
           position: absolute;
           z-index: -10;
           display: grid;
         }
         .columnGrid {
-          width: 100%;
-          height: max-content;
+          height: 100%;
+          position: fixed;
           grid-template-columns: 5% 1fr 25px 1fr 25px 1fr 5%;
         }
         .rowGrid {
-          width: 100%;
           height: max-content;
           grid-template-columns: 1fr;
           grid-template-rows: 10% 90% 100% 100% 50% 50%;
         }
         .column {
           height: 100vh;
-          border-left: 2px solid rgba(0, 0, 0, 0.025);
+          border-left: 1px solid rgba(0, 0, 0, 0.25);
+          border-right: 1px solid rgba(0, 0, 0, 0.25);
         }
         .column:first-child {
           border-left: none;
         }
+        .column:last-child {
+          border-right: none;
+        }
         .row {
-          border-top: 2px solid rgba(0, 0, 0, 0.025);
+          border-top: 2px solid rgba(0, 0, 0, 0.25);
         }
         .row:first-child {
           border-top: none;
