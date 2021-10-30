@@ -17,6 +17,7 @@ export default function Folder({ title, category, postsSubset }) {
           margin-bottom: 2.5vh;
         }
         .folderColumn {
+          height: 100%;
           display: flex;
           flex-direction: column;
           gap: 25px;

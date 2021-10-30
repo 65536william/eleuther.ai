@@ -48,7 +48,7 @@ export default function PostCard({ category, post }) {
         }
         .imageContainer {
           position: relative;
-          height: 10rem;
+          height: 5rem;
         }
         .colorBlock {
           width: 100%;

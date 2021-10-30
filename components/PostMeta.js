@@ -25,8 +25,9 @@ export default function PostMeta({ cover, date, authors, important }) {
           top: 12.5vh;
           height: max-content;
           width: 50%;
-          margin-right: 5vw;
+          margin: 0 auto;
           background-color: rgba(0, 0, 0, 0.05);
+          background: white;
           box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.05);
           border: thin solid rgba(0, 0, 0, 0.1);
         }

@@ -43,8 +43,8 @@ export default function GridBackground() {
         }
         .column {
           height: 100vh;
-          border-left: 1px solid rgba(0, 0, 0, 0.25);
-          border-right: 1px solid rgba(0, 0, 0, 0.25);
+          border-left: 1px solid rgba(0, 0, 0, 0.05);
+          border-right: 1px solid rgba(0, 0, 0, 0.05);
         }
         .column:first-child {
           border-left: none;
@@ -53,7 +53,7 @@ export default function GridBackground() {
           border-right: none;
         }
         .row {
-          border-top: 2px solid rgba(0, 0, 0, 0.25);
+          border-top: 2px solid rgba(0, 0, 0, 0.05);
         }
         .row:first-child {
           border-top: none;

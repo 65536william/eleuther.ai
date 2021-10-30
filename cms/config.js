@@ -63,6 +63,12 @@ module.exports = {
           required: true,
         },
         {
+          label: "Category",
+          name: "category",
+          widget: "string",
+          required: true,
+        },
+        {
           label: "tags",
           name: "tags",
           widget: "select",
@@ -107,6 +113,12 @@ module.exports = {
           name: "cover",
           widget: "image",
           required: false,
+        },
+        {
+          label: "Category",
+          name: "category",
+          widget: "string",
+          required: true,
         },
         {
           label: "tags",
@@ -164,6 +176,12 @@ module.exports = {
           required: true,
         },
         {
+          label: "Category",
+          name: "category",
+          widget: "string",
+          required: true,
+        },
+        {
           label: "tags",
           name: "tags",
           widget: "list",
@@ -213,6 +231,12 @@ module.exports = {
           required: false,
         },
         {
+          label: "Category",
+          name: "category",
+          widget: "string",
+          required: true,
+        },
+        {
           label: "tags",
           name: "tags",
           widget: "list",
@@ -248,6 +272,12 @@ module.exports = {
           name: "cover",
           widget: "image",
           required: false,
+        },
+        {
+          label: "Category",
+          name: "category",
+          widget: "string",
+          required: true,
         },
         {
           label: "tags",

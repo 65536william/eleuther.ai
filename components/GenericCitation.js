@@ -23,7 +23,6 @@ export default function GenericCitation(data) {
       </p>
       <style jsx>{`
         .citation {
-          margin: 0 20vw;
           background-color: black;
           color: white;
           padding: 2.5vh 2.5vw;

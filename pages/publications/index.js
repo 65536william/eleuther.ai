@@ -42,7 +42,7 @@ const folderTitles = [
 
 export default function PublicationsIndex({ postsList }) {
   let folderTitles = [];
-  postsList.forEach((post) => folderTitles.push(post.data.tags[0]));
+  postsList.forEach((post) => folderTitles.push(post.data.category));
 
   return (
     <Layout>
