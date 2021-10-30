@@ -38,6 +38,7 @@ export default function FoldersIndexHeader({ title, tags }) {
         }
         .tags {
           display: flex;
+          flex-direction: column;
           gap: 1.25rem;
         }
         h2 {

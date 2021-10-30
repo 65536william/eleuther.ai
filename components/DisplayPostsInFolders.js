@@ -30,8 +30,8 @@ export default function DisplayPostsInFolders({
             key={folderTitle}
             title={folderTitle}
             category={category}
-            postsSubset={postsList.filter((post) =>
-              post.data.tags.includes(folderTitle)
+            postsSubset={postsList.filter(
+              (post) => post.data.category === folderTitle
             )}
           />
         ))}

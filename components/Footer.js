@@ -18,6 +18,7 @@ export default function Footer() {
       </div>
       <style jsx>{`
         footer {
+          visibility: hidden;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           margin: 0 10vw;
