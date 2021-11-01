@@ -23,6 +23,7 @@ export default function GridBackground() {
       <style jsx>{`
         .grid {
           height: 100%;
+          display: none;
         }
         .columnGrid,
         .rowGrid {

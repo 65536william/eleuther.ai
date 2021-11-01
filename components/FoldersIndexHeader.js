@@ -1,29 +1,31 @@
 import { useState } from "react";
 import Tag from "./Tag";
 
-export default function FoldersIndexHeader({ title, tags }) {
-  const [tagList, setTagList] = useState([...new Set(tags.flat())]);
+export default function FoldersIndexHeader({ title, categories }) {
+  const [categoryList, setCategoryList] = useState([
+    ...new Set(categories.flat()),
+  ]);
 
   return (
     <div className="header">
       <div className="content">
         <h2>{title}</h2>
         <div className="tags">
-          {tagList.length &&
-            tagList.map((postTag) => (
+          {categoryList.length &&
+            categoryList.map((postCategory) => (
               <Tag
-                key={postTag}
-                word={postTag}
+                key={postCategory}
+                word={postCategory}
                 clickFunction={(word) => {
-                  setTagList([
-                    ...new Set(tags.flat().filter((x) => x === word)),
+                  setCategoryList([
+                    ...new Set(categories.flat().filter((x) => x === word)),
                   ]);
                   setChildrenPosts({
                     ...childrenPosts,
                     props: {
                       ...childrenPosts.props,
-                      postArray: childrenPosts.props.postArray.filter((post) =>
-                        post.data.tags.includes(word)
+                      postArray: childrenPosts.props.postArray.filter(
+                        (post) => post.data.category === word
                       ),
                     },
                   });
@@ -35,10 +37,12 @@ export default function FoldersIndexHeader({ title, tags }) {
       <style jsx>{`
         .content {
           margin: 5vh 0vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         .tags {
           display: flex;
-          flex-direction: column;
           gap: 1.25rem;
         }
         h2 {

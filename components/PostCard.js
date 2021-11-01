@@ -4,11 +4,11 @@ import Image from "next/image";
 import Tag from "./Tag";
 import categoryColors from "../styles/categoryColors";
 
-export default function PostCard({ category, post }) {
+export default function PostCard({ section, post }) {
   return (
     <>
       <Link
-        href={`${encodeURIComponent(category)}/${encodeURIComponent(
+        href={`${encodeURIComponent(section)}/${encodeURIComponent(
           post.slug.substring(0, post.slug.indexOf("."))
         )}`}
         passHref
@@ -25,17 +25,18 @@ export default function PostCard({ category, post }) {
             </div>
           )}
           <div className="cardMeta">
-            <div className="tagContainer">
-              {post.data.tags && <Tag word={post.data.tags[0]} />}
-            </div>
-            <p className="date">{post.data.date}</p>
+            {post.data.category && <Tag word={post.data.category} />}
+            {post.data.tags &&
+              post.data.tags.map((tag) => <Tag key={tag} word={tag} />)}
             <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
           </div>
         </div>
       </Link>
       <style jsx>{`
         .card {
-          border: thin solid rgba(0, 0, 0, 0.05);
+          height: 10rem;
+          display: flex;
         }
         .card:hover {
           box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
@@ -48,12 +49,7 @@ export default function PostCard({ category, post }) {
         }
         .imageContainer {
           position: relative;
-          height: 5rem;
-        }
-        .colorBlock {
-          width: 100%;
-          height: 100px;
-          background-color: ${categoryColors[category]};
+          width: 25rem;
         }
         h3 {
           font-size: 1.25rem;

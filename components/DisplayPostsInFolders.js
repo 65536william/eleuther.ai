@@ -1,5 +1,6 @@
 import FoldersIndexHeader from "./FoldersIndexHeader";
 import Folder from "./Folder";
+import PostCard from "./PostCard";
 
 export default function DisplayPostsInFolders({
   title,
@@ -7,41 +8,23 @@ export default function DisplayPostsInFolders({
   postsList,
 }) {
   postsList.sort((a, b) => b.data.date - a.data.date);
-  const category = title.toLowerCase();
   return (
     <div>
-      <div className="topDiv">
-        <FoldersIndexHeader
-          title={title}
-          tags={postsList.map((post) => post.data.tags)}
-        />
-        <Folder
-          title="Breakthroughs"
-          category={category}
-          postsSubset={postsList.filter((post) => post.data.breakthrough)}
-        />
-        <Folder
-          title="Latest"
-          category={category}
-          postsSubset={postsList.slice(0, 4)}
-        />
-        {folderTitles.map((folderTitle) => (
-          <Folder
-            key={folderTitle}
-            title={folderTitle}
-            category={category}
-            postsSubset={postsList.filter(
-              (post) => post.data.category === folderTitle
-            )}
-          />
+      <FoldersIndexHeader
+        title={title}
+        categories={postsList.map((post) => post.data.category)}
+      />
+      <div className="postsGrid">
+        {postsList.map((post) => (
+          <PostCard key={post.data.title} post={post} section={"blog"} />
         ))}
       </div>
       <style jsx>{`
-        .topDiv {
+        .postsGrid {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          grid-template-rows: 90vh 100vh;
-          column-gap: 25px;
+          grid-template-columns: 1fr 1fr;
+          row-gap: 2.5vw;
+          column-gap: 2.5vh;
         }
       `}</style>
     </div>
