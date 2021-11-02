@@ -74,7 +74,7 @@ export default function BlogSlug({ source, frontMatter }) {
         </div>
         <PostMeta
           cover={frontMatter.cover}
-          date={dayjs(frontMatter.date).format("DD MMMM, YYYY")}
+          date={dayjs(Number(frontMatter.date)).format("DD MMMM, YYYY")}
           authors={frontMatter.authors}
         />
       </div>

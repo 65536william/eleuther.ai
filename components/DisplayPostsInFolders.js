@@ -1,6 +1,7 @@
 import FoldersIndexHeader from "./FoldersIndexHeader";
 import Folder from "./Folder";
 import PostCard from "./PostCard";
+import dayjs from "dayjs";
 
 export default function DisplayPostsInFolders({
   title,
@@ -8,17 +9,32 @@ export default function DisplayPostsInFolders({
   postsList,
 }) {
   postsList.sort((a, b) => b.data.date - a.data.date);
+  const postsListByYear = postsList.reduce((acc, value) => {
+    const year = dayjs(Number(value.data.date)).year();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(value);
+    return acc;
+  }, {});
   return (
     <div>
       <FoldersIndexHeader
         title={title}
         categories={postsList.map((post) => post.data.category)}
       />
-      <div className="postsGrid">
-        {postsList.map((post) => (
-          <PostCard key={post.data.title} post={post} section={"blog"} />
+      {Object.entries(postsListByYear)
+        .reverse()
+        .map(([year, posts]) => (
+          <div>
+            <h3>{year}</h3>
+            <div className="postsGrid">
+              {posts.map((post) => (
+                <PostCard key={post.data.title} post={post} section={"blog"} />
+              ))}
+            </div>
+          </div>
         ))}
-      </div>
       <style jsx>{`
         .postsGrid {
           display: grid;

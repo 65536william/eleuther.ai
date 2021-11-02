@@ -47,7 +47,7 @@ export default function PostCard({ section, post }) {
         .card {
           height: 15rem;
           display: grid;
-          grid-template-columns: 10rem 1fr;
+          grid-template-columns: 12.5rem 1fr;
         }
         .card:hover {
           box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
