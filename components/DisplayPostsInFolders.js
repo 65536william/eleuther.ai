@@ -23,8 +23,8 @@ export default function DisplayPostsInFolders({
         .postsGrid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          row-gap: 2.5vw;
-          column-gap: 2.5vh;
+          row-gap: 5vw;
+          column-gap: 5vh;
         }
       `}</style>
     </div>

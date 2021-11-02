@@ -41,7 +41,7 @@ module.exports = {
           label: "Date",
           name: "date",
           widget: "datetime",
-          format: "LL",
+          format: "x",
           required: true,
         },
         {
@@ -102,6 +102,13 @@ module.exports = {
           required: true,
         },
         {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          format: "x",
+          required: true,
+        },
+        {
           label: "Status",
           name: "status",
           widget: "select",
@@ -155,6 +162,7 @@ module.exports = {
           label: "Date",
           name: "date",
           widget: "datetime",
+          format: "x",
           required: true,
         },
         {
@@ -216,6 +224,7 @@ module.exports = {
           label: "Date",
           name: "date",
           widget: "datetime",
+          format: "x",
           required: true,
         },
         {
@@ -265,6 +274,13 @@ module.exports = {
           label: "Title",
           name: "title",
           widget: "string",
+          required: true,
+        },
+        {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          format: "x",
           required: true,
         },
         {

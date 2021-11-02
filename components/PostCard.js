@@ -15,31 +15,42 @@ export default function PostCard({ section, post }) {
         key={post.slug}
       >
         <div className="card">
-          {post.data.cover && (
-            <div className="imageContainer">
+          <div className="imageContainer">
+            {post.data.cover ? (
               <Image
                 src={post.data.cover.substring(post.data.cover.indexOf("/"))}
                 layout="fill"
                 objectFit="cover"
               />
-            </div>
-          )}
+            ) : (
+              <div
+                style={{
+                  backgroundColor: `#${Math.floor(
+                    Math.random() * 16777215
+                  ).toString(16)}`,
+                  width: "100%",
+                  height: "100%",
+                }}
+              ></div>
+            )}
+          </div>
           <div className="cardMeta">
             {post.data.category && <Tag word={post.data.category} />}
-            {post.data.tags &&
-              post.data.tags.map((tag) => <Tag key={tag} word={tag} />)}
             <h3>{post.data.title}</h3>
             <p>{post.data.description}</p>
+            {post.data.tags &&
+              post.data.tags.map((tag) => <Tag key={tag} word={tag} />)}
           </div>
         </div>
       </Link>
       <style jsx>{`
         .card {
-          height: 10rem;
-          display: flex;
+          height: 15rem;
+          display: grid;
+          grid-template-columns: 10rem 1fr;
         }
         .card:hover {
-          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
         }
         .cardMeta {
           padding: 1.25vh 1.25vw;
@@ -49,12 +60,11 @@ export default function PostCard({ section, post }) {
         }
         .imageContainer {
           position: relative;
-          width: 25rem;
         }
         h3 {
           font-size: 1.25rem;
           line-height: 1.25;
-          font-weight: normal;
+          font-weight: bold;
         }
         .date {
           width: max-content;
