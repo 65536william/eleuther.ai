@@ -32,7 +32,7 @@ export default function ModelsIndex({ postsList }) {
   return (
     <Layout>
       <DisplayPostsInFolders
-        title="Projects"
+        title="Models"
         folderTitles={[...new Set(folderTitles)]}
         postsList={postsList}
       />

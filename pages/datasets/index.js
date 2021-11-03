@@ -33,7 +33,7 @@ export default function DatasetsIndex({ postsList }) {
   return (
     <Layout>
       <DisplayPostsInFolders
-        title="Projects"
+        title="Datasets"
         folderTitles={[...new Set(folderTitles)]}
         postsList={postsList}
       />

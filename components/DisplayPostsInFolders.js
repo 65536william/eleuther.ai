@@ -42,7 +42,7 @@ export default function DisplayPostsInFolders({
                   <PostCard
                     key={post.data.title}
                     post={post}
-                    section={"blog"}
+                    section={title.toLowerCase()}
                   />
                 ))}
               </div>
