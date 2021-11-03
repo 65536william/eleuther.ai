@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Tag from "./Tag";
 
-export default function FoldersIndexHeader({ title, categories }) {
-  const [categoryList, setCategoryList] = useState([
-    ...new Set(categories.flat()),
-  ]);
-
+export default function FoldersIndexHeader({
+  title,
+  categories,
+  categoryList,
+  setCategoryList,
+}) {
   return (
     <div className="header">
       <div className="content">
@@ -20,15 +21,6 @@ export default function FoldersIndexHeader({ title, categories }) {
                   setCategoryList([
                     ...new Set(categories.flat().filter((x) => x === word)),
                   ]);
-                  setChildrenPosts({
-                    ...childrenPosts,
-                    props: {
-                      ...childrenPosts.props,
-                      postArray: childrenPosts.props.postArray.filter(
-                        (post) => post.data.category === word
-                      ),
-                    },
-                  });
                 }}
               />
             ))}

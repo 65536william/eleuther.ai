@@ -2,19 +2,25 @@ import FoldersIndexHeader from "./FoldersIndexHeader";
 import Folder from "./Folder";
 import PostCard from "./PostCard";
 import dayjs from "dayjs";
+import { useState } from "react";
 
 export default function DisplayPostsInFolders({
   title,
   folderTitles,
   postsList,
 }) {
+  const [categoryList, setCategoryList] = useState([
+    ...new Set(postsList.map((post) => post.data.category)),
+  ]);
   postsList.sort((a, b) => b.data.date - a.data.date);
   const postsListByYear = postsList.reduce((acc, value) => {
     const year = dayjs(Number(value.data.date)).year();
     if (!acc[year]) {
       acc[year] = [];
     }
-    acc[year].push(value);
+    if (categoryList.includes(value.data.category)) {
+      acc[year].push(value);
+    }
     return acc;
   }, {});
   return (
@@ -22,6 +28,8 @@ export default function DisplayPostsInFolders({
       <FoldersIndexHeader
         title={title}
         categories={postsList.map((post) => post.data.category)}
+        categoryList={categoryList}
+        setCategoryList={setCategoryList}
       />
       <div className="foldersDisplay">
         {Object.entries(postsListByYear)

@@ -57,6 +57,7 @@ export default function PostCard({ section, post }) {
           display: flex;
           flex-direction: column;
           gap: 1vh;
+          justify-content: center;
         }
         .imageContainer {
           position: relative;
