@@ -35,7 +35,7 @@ export default function DisplayPostsInFolders({
         {Object.entries(postsListByYear)
           .reverse()
           .map(([year, posts]) => (
-            <div>
+            <div key={year}>
               <h3 className="year">{year}</h3>
               <div className="postsGrid">
                 {posts.map((post) => (
