@@ -38,14 +38,14 @@ export default function PostCard({ section, post }) {
             {post.data.category && <Tag word={post.data.category} />}
             <h3>{post.data.title}</h3>
             <p>{post.data.description}</p>
-            {post.data.tags &&
-              post.data.tags.map((tag) => <Tag key={tag} word={tag} />)}
+            {/*  {post.data.tags &&
+              post.data.tags.map((tag) => <Tag key={tag} word={tag} />)} */}
           </div>
         </div>
       </Link>
       <style jsx>{`
         .card {
-          height: 15rem;
+          height: 12.5rem;
           display: grid;
           grid-template-columns: 12.5rem 1fr;
         }
@@ -69,6 +69,10 @@ export default function PostCard({ section, post }) {
         .date {
           width: max-content;
           font-size: 1rem;
+        }
+        p {
+          font-size: 1.25rem;
+          line-height: 1.25;
         }
       `}</style>
     </>

@@ -2,11 +2,11 @@ function getDivColor(word) {
   switch (word) {
     case "Large Language Models":
       return "#4a69bd";
-    case "GPT-3":
+    case "AI-Assisted Design":
       return "#ff7675";
     case "GPT-Neo":
       return "#a29bfe";
-    case "meta":
+    case "Meta":
       return "#636e72";
     case "Biological ML":
       return "#b71540";

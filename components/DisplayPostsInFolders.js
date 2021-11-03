@@ -23,24 +23,38 @@ export default function DisplayPostsInFolders({
         title={title}
         categories={postsList.map((post) => post.data.category)}
       />
-      {Object.entries(postsListByYear)
-        .reverse()
-        .map(([year, posts]) => (
-          <div>
-            <h3>{year}</h3>
-            <div className="postsGrid">
-              {posts.map((post) => (
-                <PostCard key={post.data.title} post={post} section={"blog"} />
-              ))}
+      <div className="foldersDisplay">
+        {Object.entries(postsListByYear)
+          .reverse()
+          .map(([year, posts]) => (
+            <div>
+              <h3 className="year">{year}</h3>
+              <div className="postsGrid">
+                {posts.map((post) => (
+                  <PostCard
+                    key={post.data.title}
+                    post={post}
+                    section={"blog"}
+                  />
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+      </div>
       <style jsx>{`
         .postsGrid {
           display: grid;
           grid-template-columns: 1fr 1fr;
           row-gap: 5vw;
           column-gap: 5vh;
+        }
+        .foldersDisplay {
+          display: flex;
+          flex-direction: column;
+          gap: 5vh;
+        }
+        .year {
+          margin-bottom: 2.5vh;
         }
       `}</style>
     </div>
