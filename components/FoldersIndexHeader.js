@@ -18,9 +18,13 @@ export default function FoldersIndexHeader({
                 key={postCategory}
                 word={postCategory}
                 clickFunction={(word) => {
-                  setCategoryList([
-                    ...new Set(categories.flat().filter((x) => x === word)),
-                  ]);
+                  if (categoryList.every((it) => it === word)) {
+                    setCategoryList([...new Set(categories)]);
+                  } else {
+                    setCategoryList([
+                      ...new Set(categories.flat().filter((x) => x === word)),
+                    ]);
+                  }
                 }}
               />
             ))}
