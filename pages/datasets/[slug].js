@@ -56,7 +56,7 @@ export default function DatasetSlug({ source, frontMatter }) {
   return (
     <Layout>
       <div className="postgrid">
-        <div>
+        <div className="content">
           <PostHeader
             title={frontMatter.title}
             subtitle={frontMatter.description}
@@ -73,8 +73,11 @@ export default function DatasetSlug({ source, frontMatter }) {
       </div>
       <style jsx>{`
         .postgrid {
-          display: flex;
-          justify-content: space-between;
+          display: grid;
+          grid-template-columns: 1fr 150px 1fr;
+        }
+        .content {
+          grid-column: 1 / 3;
         }
       `}</style>
     </Layout>

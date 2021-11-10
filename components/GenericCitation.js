@@ -15,7 +15,10 @@ export default function GenericCitation(data) {
         &#123;
         {data.frontmatter.authors?.map(
           (author, index) =>
-            author.split(" ")[1] + ", " + author.split(" ")[0] + " and "
+            author.split(" ")[1] +
+            ", " +
+            author.split(" ")[0] +
+            (data.frontmatter.authors > 1 ? " and " : "")
         ) || "Eleuther AI"}
         &#125;, howpublished = \url&#123;https://eleuther.ai
         {router.asPath}&#125;, note = &#123;[Online; accessed{" "}

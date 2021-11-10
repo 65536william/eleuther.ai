@@ -4,11 +4,7 @@ import PostCard from "./PostCard";
 import dayjs from "dayjs";
 import { useState } from "react";
 
-export default function DisplayPostsInFolders({
-  title,
-  folderTitles,
-  postsList,
-}) {
+export default function DisplayPostsInFolders({ title, postsList }) {
   const [categoryList, setCategoryList] = useState([
     ...new Set(postsList.map((post) => post.data.category)),
   ]);
@@ -53,8 +49,8 @@ export default function DisplayPostsInFolders({
         .postsGrid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          row-gap: 5vw;
-          column-gap: 5vh;
+          column-gap: 150px;
+          row-gap: 50px;
         }
         .foldersDisplay {
           display: flex;

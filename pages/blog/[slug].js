@@ -81,8 +81,7 @@ export default function BlogSlug({ source, frontMatter }) {
       <style jsx>{`
         .postgrid {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 25px;
+          grid-template-columns: 1fr 150px 1fr;
         }
         .content {
           grid-column: 1 / 3;

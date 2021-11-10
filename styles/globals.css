@@ -149,8 +149,8 @@ h1 {
 }
 
 h2 {
-  font-size: 1.75rem;
-  line-height: 1.75;
+  font-size: 1.25rem;
+  line-height: 1.25;
 }
 
 h3 {
@@ -194,6 +194,8 @@ a:hover {
 
 p {
   margin: 1vh 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 br {
@@ -215,6 +217,6 @@ ol {
 ul li,
 ol li {
   margin: 2.5vh 0;
-  font-size: 1.25rem;
-  line-height: 1.25;
+  font-size: inherit;
+  line-height: 1.5rem;
 }
