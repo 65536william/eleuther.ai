@@ -33,15 +33,12 @@ export default function Header() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          margin: 0 5vw;
+          margin: 0 5vw 5vh;
         }
         h1 {
           font-weight: bold;
-          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
-            sans-serif;
-          font-style: normal;
           line-height: 1;
+          font-size: 2.5rem;
         }
         nav {
           width: 50%;

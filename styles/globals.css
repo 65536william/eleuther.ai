@@ -137,7 +137,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+span {
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
 }
@@ -219,4 +220,15 @@ ol li {
   margin: 2.5vh 0;
   font-size: inherit;
   line-height: 1.5rem;
+}
+
+:root {
+  --blog-color: orange;
+  --projects-color: green;
+  --publications-color: purple;
+  --datasets-color: yellow;
+  --models-color: pink;
+  --faq-color: blue;
+  --discord-color: indigo;
+  --github-color: rgb(32, 30, 30);
 }
