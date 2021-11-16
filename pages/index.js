@@ -47,6 +47,18 @@ const links = [
     slug: "blog",
     bgColor: "var(--github-color)",
   },
+  {
+    name: "Get involved",
+    slug: "get-involved",
+    bgColor: "var(--github-color)",
+  },
+];
+
+const announcements = [
+  {
+    date: "2021-11-01",
+    text: "We are proud to announce the release of the Pile, a free and publicly available 825GB dataset of diverse English text for language modeling!",
+  },
 ];
 
 export default function Index() {
@@ -78,6 +90,15 @@ export default function Index() {
           </div>
         </div>
         <div>
+          <div>
+            <h4>Announcements</h4>
+            {announcements.map((announcement) => (
+              <div>
+                <p>{announcement.date}</p>
+                <p>{announcement.text}</p>
+              </div>
+            ))}
+          </div>
           <div className="linksStack">
             {links.map((link) => (
               <SquareCard
@@ -107,7 +128,7 @@ export default function Index() {
           }
           .linksStack {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
             gap: 25px;
           }
         `}</style>

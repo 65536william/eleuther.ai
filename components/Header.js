@@ -29,10 +29,10 @@ export default function Header() {
       </nav>
       <style jsx>{`
         header {
-          height: 10vh;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 150px;
+          padding-top: 5vh;
           margin: 0 5vw 5vh;
         }
         h1 {
@@ -41,15 +41,16 @@ export default function Header() {
           font-size: 2.5rem;
         }
         nav {
-          width: 50%;
           display: flex;
           justify-content: space-between;
         }
         a {
           text-decoration: none;
           color: inherit;
-          font-size: 1.25rem;
           font-style: normal;
+          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
+            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
+            sans-serif;
         }
       `}</style>
     </header>
