@@ -2,6 +2,10 @@ import Layout from "../components/Layout";
 import Link from "next/link";
 import LinkCard from "../components/LinkCard";
 import SquareCard from "../components/SquareCard";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import dayjs from "dayjs";
 
 const sitemap = [
   {
@@ -54,14 +58,8 @@ const links = [
   },
 ];
 
-const announcements = [
-  {
-    date: "2021-11-01",
-    text: "We are proud to announce the release of the Pile, a free and publicly available 825GB dataset of diverse English text for language modeling!",
-  },
-];
-
-export default function Index() {
+export default function Index({ announcementsList }) {
+  console.log(announcementsList);
   return (
     <Layout>
       <div className="container">
@@ -92,10 +90,11 @@ export default function Index() {
         <div>
           <div>
             <h4>Announcements</h4>
-            {announcements.map((announcement) => (
+            {announcementsList.map((announcement) => (
               <div>
-                <p>{announcement.date}</p>
-                <p>{announcement.text}</p>
+                <p>{dayjs(announcement.data.date).format("YYYY-MM-DD")}</p>
+                <p>{announcement.data.title}</p>
+                <p>{announcement.content}</p>
               </div>
             ))}
           </div>
@@ -135,4 +134,26 @@ export default function Index() {
       </div>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const announcementsList = fs
+    .readdirSync(path.join(process.cwd(), "content/announcements"))
+    // Only include md(x) files
+    .filter((path) => /\.mdx?$/.test(path))
+    .map((slug) => {
+      const source = fs.readFileSync(
+        path.join(path.join(process.cwd(), "content/announcements"), slug)
+      );
+      const { data, content } = matter(source);
+      return {
+        data,
+        content,
+      };
+    });
+  return {
+    props: {
+      announcementsList,
+    },
+  };
 }

@@ -309,5 +309,43 @@ module.exports = {
         },
       ],
     },
+    {
+      name: "announcements",
+      label: "Announcements",
+      editor: { preview: false },
+      label_singular: "Announcement",
+      folder: "content/announcements",
+      create: true,
+      slug: "{{slug}}",
+      extension: "mdx",
+      format: "yaml-frontmatter",
+      fields: [
+        {
+          label: "Title",
+          name: "title",
+          widget: "string",
+          required: true,
+        },
+        {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          format: "x",
+          required: true,
+        },
+        {
+          label: "Body",
+          name: "body",
+          widget: "markdown",
+          required: true,
+        },
+        {
+          label: "Link",
+          name: "link",
+          widget: "string",
+          required: false,
+        },
+      ],
+    },
   ],
 };
