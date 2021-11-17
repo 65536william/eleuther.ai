@@ -6,7 +6,7 @@ export default function LinkCard({ slug, text, color }) {
       <Link href={slug}>
         <div className="card">
           <div className="title">
-            <div className="circle"></div>
+            {color && <div className="circle"></div>}
             <span>{text}</span>
           </div>
           <p>→</p>
