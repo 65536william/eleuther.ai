@@ -67,7 +67,7 @@ export default function ModelSlug({ source, frontMatter }) {
         </div>
         <PostMeta
           cover={frontMatter.cover}
-          date={dayjs(frontMatter.date).format("DD MMMM, YYYY")}
+          date={dayjs(Number(frontMatter.date)).format("D MMMM, YYYY")}
           authors={frontMatter.authors}
         />
       </div>

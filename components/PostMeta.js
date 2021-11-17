@@ -14,7 +14,7 @@ export default function PostMeta({ cover, date, authors, important }) {
       )}
       <div className="innerText">
         {important && <p>{important}</p>}
-        <p>{date}</p>
+        <p className="date">{date}</p>
         {authors?.map((author) => (
           <p key={author}>{author}</p>
         ))}
@@ -33,6 +33,9 @@ export default function PostMeta({ cover, date, authors, important }) {
         }
         .innerText {
           padding: 5%;
+        }
+        .date {
+          font-style: italic;
         }
         .imageContainer {
           position: relative;

@@ -35,7 +35,6 @@ export default function FoldersIndexHeader({
           margin: 5vh 0vw;
           display: flex;
           flex-direction: column;
-          align-items: center;
         }
         .tags {
           display: flex;

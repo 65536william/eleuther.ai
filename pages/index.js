@@ -107,8 +107,8 @@ export default function Index({ announcementsList }) {
                       {announcement.data.title}
                     </p>
                     <p className="announcementDate">
-                      {dayjs(parseInt(announcement.data.date, 10)).format(
-                        "MMMM D, YYYY"
+                      {dayjs(Number(announcement.data.date)).format(
+                        "D MMMM, YYYY"
                       )}
                     </p>
                   </div>
