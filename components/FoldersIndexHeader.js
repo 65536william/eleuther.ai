@@ -17,6 +17,7 @@ export default function FoldersIndexHeader({
               <Tag
                 key={postCategory}
                 word={postCategory}
+                bold
                 clickFunction={(word) => {
                   if (categoryList.every((it) => it === word)) {
                     setCategoryList([...new Set(categories)]);

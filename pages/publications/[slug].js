@@ -75,6 +75,8 @@ export default function PublicationSlug({ source, frontMatter }) {
           cover={frontMatter.cover}
           date={dayjs(Number(frontMatter.date)).format("D MMMM, YYYY")}
           authors={frontMatter.authors}
+          category={frontMatter.category}
+          tags={frontMatter.tags}
         />
       </div>
       <style jsx>{`

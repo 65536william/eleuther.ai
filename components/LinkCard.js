@@ -25,7 +25,7 @@ export default function LinkCard({ slug, text, color }) {
           transition: all 0.2s ease-in-out;
         }
         .card:hover {
-          box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.25);
           transform: scale(1.01);
         }
         .title {

@@ -48,9 +48,16 @@ export default function PostCard({ section, post }) {
           height: 12.5rem;
           display: grid;
           grid-template-columns: 12.5rem 1fr;
+          gap: 1.5rem;
+          background-color: white;
+          padding: 1.5rem;
+          border-radius: 0.25rem;
+          transition: all 0.2s ease-in-out;
+          border: thin solid rgba(0, 0, 0, 0.25);
         }
         .card:hover {
-          box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.25);
+          transform: scale(1.01);
         }
         .cardMeta {
           padding: 1.25vh 1.25vw;
@@ -61,6 +68,7 @@ export default function PostCard({ section, post }) {
         }
         .imageContainer {
           position: relative;
+          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.25);
         }
         h3 {
           font-size: 1.25rem;

@@ -70,6 +70,8 @@ export default function ProjectSlug({ source, frontMatter }) {
           date={dayjs(Number(frontMatter.date)).format("D MMMM, YYYY")}
           authors={frontMatter.authors}
           important={frontMatter.status}
+          category={frontMatter.category}
+          tags={frontMatter.tags}
         />
       </div>
       <style jsx>{`

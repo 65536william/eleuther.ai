@@ -1,6 +1,7 @@
 import Image from "next/image";
+import Tag from "./Tag";
 
-export default function PostMeta({ cover, date, authors, important }) {
+export default function PostMeta({ cover, date, authors, category, tags }) {
   return (
     <div className="postmeta">
       {cover && (
@@ -13,11 +14,12 @@ export default function PostMeta({ cover, date, authors, important }) {
         </div>
       )}
       <div className="innerText">
-        {important && <p>{important}</p>}
         <p className="date">{date}</p>
         {authors?.map((author) => (
           <p key={author}>{author}</p>
         ))}
+        {category && <Tag word={category} bold />}
+        {tags && tags.map((tag, index) => <Tag key={index} word={tag} />)}
       </div>
       <style jsx>{`
         .postmeta {
@@ -26,13 +28,11 @@ export default function PostMeta({ cover, date, authors, important }) {
           height: max-content;
           width: 50%;
           margin: 0 auto;
-          background-color: rgba(0, 0, 0, 0.05);
           background: white;
-          box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.05);
-          border: thin solid rgba(0, 0, 0, 0.1);
-        }
-        .innerText {
-          padding: 5%;
+          padding: 0.75rem 1.5rem;
+          border-radius: 0.25rem;
+          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.25);
+          border: thin solid rgba(0, 0, 0, 0.25);
         }
         .date {
           font-style: italic;

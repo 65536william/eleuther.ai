@@ -15,7 +15,7 @@ function getDivColor(word) {
   }
 }
 
-export default function Tag({ word, clickFunction }) {
+export default function Tag({ word, clickFunction, bold }) {
   function handleClick(word) {
     if (clickFunction) {
       clickFunction(word);
@@ -27,13 +27,13 @@ export default function Tag({ word, clickFunction }) {
       <span>{word}</span>
       <style jsx>{`
         div {
-          background-color: ${getDivColor(word)};
+          background-color: ${bold ? getDivColor(word) : "none"};
           display: inline-block;
           width: max-content;
           padding: 0.25rem 0.5rem;
         }
         span {
-          color: white;
+          color: ${bold ? "white" : "black"};
           font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
             segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
             sans-serif;
