@@ -38,7 +38,7 @@ const sitemap = [
 const links = [
   {
     name: "FAQ",
-    slug: "blog",
+    slug: "faq",
     bgColor: "var(--faq-color)",
   },
   {
@@ -81,7 +81,7 @@ export default function Index({ announcementsList }) {
             {links.map((link) => (
               <LinkCard
                 key={link.name}
-                slug={"/"}
+                slug={"/" + link.slug}
                 text={link.name}
                 color={link.bgColor}
               />
