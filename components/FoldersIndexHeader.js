@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Category from "./Category";
 import Tag from "./Tag";
 
 export default function FoldersIndexHeader({
@@ -14,7 +15,7 @@ export default function FoldersIndexHeader({
         <div className="tags">
           {categoryList.length &&
             categoryList.map((postCategory) => (
-              <Tag
+              <Category
                 key={postCategory}
                 word={postCategory}
                 bold

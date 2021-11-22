@@ -38,22 +38,22 @@ const sitemap = [
 const links = [
   {
     name: "FAQ",
-    slug: "faq",
+    slug: "/faq",
     bgColor: "var(--faq-color)",
   },
   {
     name: "Discord",
-    slug: "blog",
+    slug: "https://discord.com/invite/zBGx3azzUn",
     bgColor: "var(--discord-color)",
   },
   {
     name: "GitHub",
-    slug: "blog",
+    slug: "https://github.com/EleutherAI",
     bgColor: "var(--github-color)",
   },
   {
     name: "Get involved",
-    slug: "get-involved",
+    slug: "/get-involved",
     bgColor: "var(--github-color)",
   },
 ];
@@ -81,7 +81,7 @@ export default function Index({ announcementsList }) {
             {links.map((link) => (
               <LinkCard
                 key={link.name}
-                slug={"/" + link.slug}
+                slug={link.slug}
                 text={link.name}
                 color={link.bgColor}
               />
