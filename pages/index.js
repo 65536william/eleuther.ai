@@ -112,10 +112,12 @@ export default function Index({ announcementsList }) {
                       )}
                     </p>
                   </div>
-                  <p className="announcementContent">{announcement.content}</p>
-                  <Link href={announcement.data.link} passHref>
-                    <a className="announcementLink">View more →</a>
-                  </Link>
+                  <p className="announcementContent">
+                    {announcement.content}{" "}
+                    <Link href={announcement.data.link} passHref>
+                      <a className="announcementLink">View more →</a>
+                    </Link>
+                  </p>
                 </div>
               ))}
             </div>
