@@ -35,7 +35,7 @@ export default function BlogIndex({ postsList }) {
         title="Blog"
         folderTitles={[...new Set(folderTitles)]}
         postsList={postsList}
-      ></DisplayPostsInFolders>
+      />
     </Layout>
   );
 }

@@ -11,27 +11,27 @@ const sitemap = [
   {
     name: "Blog",
     slug: "blog",
-    color: "var(--blog-color)",
+    color: "var(--red)",
   },
   {
     name: "Projects",
     slug: "blog",
-    color: "var(--projects-color)",
+    color: "var(--yellow)",
   },
   {
     name: "Publications",
     slug: "blog",
-    color: "var(--publications-color)",
+    color: "var(--green)",
   },
   {
     name: "Datasets",
     slug: "blog",
-    color: "var(--datasets-color)",
+    color: "var(--blue)",
   },
   {
     name: "Models",
     slug: "blog",
-    color: "var(--models-color)",
+    color: "var(--purple)",
   },
 ];
 
@@ -39,22 +39,22 @@ const links = [
   {
     name: "GitHub",
     slug: "https://github.com/EleutherAI",
-    bgColor: "var(--github-color)",
+    bgColor: "var(--black)",
   },
   {
     name: "Discord",
     slug: "https://discord.com/invite/zBGx3azzUn",
-    bgColor: "var(--discord-color)",
+    bgColor: "var(--gray)",
   },
   {
     name: "FAQ",
     slug: "/faq",
-    bgColor: "var(--faq-color)",
+    bgColor: "var(--orange)",
   },
   {
     name: "Get involved",
     slug: "/get-involved",
-    bgColor: "var(--get-involved-color)",
+    bgColor: "var(--teal)",
   },
 ];
 

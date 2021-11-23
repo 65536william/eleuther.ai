@@ -1,17 +1,17 @@
-function getDivColor(word) {
+function getTextColor(word) {
   switch (word) {
     case "Large Language Models":
-      return "#4a69bd";
-    case "AI-Assisted Design":
-      return "#ff7675";
-    case "GPT-Neo":
-      return "#a29bfe";
-    case "Meta":
-      return "#636e72";
+      return "var(--red)";
+    case "Multimodal Modeling":
+      return "var(--yellow)";
+    case "AI Alignment and Interpretability":
+      return "var(--green)";
     case "Biological ML":
-      return "#b71540";
+      return "var(--blue)";
+    case "AI-Assisted Design and Computational Creativity":
+      return "var(--purple)";
     default:
-      return "black";
+      return "var(--black)";
   }
 }
 
@@ -26,18 +26,15 @@ export default function Category({ word, clickFunction, bold }) {
     <div onClick={() => handleClick(word)}>
       <span>{word}</span>
       <style jsx>{`
-        div {
-          background-color: ${bold ? getDivColor(word) : "none"};
-          display: inline-block;
-          width: max-content;
-          padding: 0.25rem 0.5rem;
-        }
         span {
-          color: ${bold ? "white" : "black"};
+          color: ${bold ? getTextColor(word) : "none"};
           font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
             segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
             sans-serif;
-          text-decoration: underline;
+          padding-bottom: 4px;
+          border-bottom: medium solid ${getTextColor(word)};
+          font-weight: bold;
+          cursor: pointer;
         }
       `}</style>
     </div>

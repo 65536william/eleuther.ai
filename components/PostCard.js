@@ -35,11 +35,11 @@ export default function PostCard({ section, post }) {
             )}
           </div>
           <div className="cardMeta">
-            {post.data.category && <Tag word={post.data.category} />}
             <h3>{post.data.title}</h3>
             <p>{post.data.description}</p>
-            {/*  {post.data.tags &&
-              post.data.tags.map((tag) => <Tag key={tag} word={tag} />)} */}
+            {post.data.tags?.map((tag) => (
+              <Tag key={tag} word={tag} bold />
+            ))}
           </div>
         </div>
       </Link>
@@ -68,7 +68,6 @@ export default function PostCard({ section, post }) {
         }
         .imageContainer {
           position: relative;
-          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.25);
         }
         h3 {
           font-size: 1.25rem;

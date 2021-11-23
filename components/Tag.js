@@ -1,15 +1,15 @@
 function getDivColor(word) {
   switch (word) {
-    case "Large Language Models":
-      return "#4a69bd";
-    case "AI-Assisted Design":
-      return "#ff7675";
+    case "Language Modeling":
+      return "var(--red-dark)";
+    case "Activation Functions":
+      return "var(--yellow-dark)";
     case "GPT-Neo":
-      return "#a29bfe";
-    case "Meta":
-      return "#636e72";
-    case "Biological ML":
-      return "#b71540";
+      return "var(--green-dark)";
+    case "GPT-3":
+      return "var(--blue-dark)";
+    case "Rotary Embeddings":
+      return "var(--purple-dark)";
     default:
       return "black";
   }
@@ -27,13 +27,15 @@ export default function Tag({ word, clickFunction, bold }) {
       <span>{word}</span>
       <style jsx>{`
         div {
-          background-color: ${bold ? getDivColor(word) : "none"};
+          border: ${bold ? `thin solid ${getDivColor(word)}` : "none"};
           display: inline-block;
           width: max-content;
-          padding: 0.25rem 0.5rem;
+          padding: 0.125rem 0.25rem 0.25rem;
+          border-radius: 0.25rem;
         }
         span {
-          color: ${bold ? "white" : "black"};
+          font-size: 0.75rem;
+          color: ${bold ? getDivColor(word) : "black"};
           font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
             segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
             sans-serif;
