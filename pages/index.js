@@ -37,9 +37,9 @@ const sitemap = [
 
 const links = [
   {
-    name: "FAQ",
-    slug: "/faq",
-    bgColor: "var(--faq-color)",
+    name: "GitHub",
+    slug: "https://github.com/EleutherAI",
+    bgColor: "var(--github-color)",
   },
   {
     name: "Discord",
@@ -47,14 +47,14 @@ const links = [
     bgColor: "var(--discord-color)",
   },
   {
-    name: "GitHub",
-    slug: "https://github.com/EleutherAI",
-    bgColor: "var(--github-color)",
+    name: "FAQ",
+    slug: "/faq",
+    bgColor: "var(--faq-color)",
   },
   {
     name: "Get involved",
     slug: "/get-involved",
-    bgColor: "var(--github-color)",
+    bgColor: "var(--get-involved-color)",
   },
 ];
 
@@ -98,7 +98,7 @@ export default function Index({ announcementsList }) {
             Our Discord server is open and welcomes contributors.
           </p>
           <div>
-            <h4>Announcements</h4>
+            <h3>Announcements</h3>
             <div className="announcementsStack">
               {announcementsList.map((announcement) => (
                 <div className="announcement">
@@ -129,14 +129,6 @@ export default function Index({ announcementsList }) {
             grid-template-columns: 1fr 1fr;
             gap: 150px;
           }
-          h2 {
-            font-size: 1.25rem;
-            font-weight: bold;
-            margin: 0;
-          }
-          .about {
-            margin: 0;
-          }
           .column {
             display: flex;
             flex-direction: column;
@@ -166,6 +158,7 @@ export default function Index({ announcementsList }) {
             font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
               segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
               sans-serif;
+            font-size: 1.125rem;
           }
           .announcementDate {
             font-size: 0.75rem;

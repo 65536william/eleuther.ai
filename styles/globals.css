@@ -150,13 +150,14 @@ h1 {
 }
 
 h2 {
-  font-size: 1.25rem;
-  line-height: 1.25;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: bold;
 }
 
 h3 {
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font-size: 1.25rem;
+  line-height: 1.25;
   font-weight: bold;
 }
 
@@ -186,7 +187,7 @@ tbody tr:hover {
 a {
   font-style: italic;
   text-decoration: underline;
-  color: inherit;
+  color: #16a085;
 }
 
 a:hover {
@@ -223,12 +224,13 @@ ol li {
 }
 
 :root {
-  --blog-color: orange;
-  --projects-color: green;
-  --publications-color: purple;
-  --datasets-color: yellow;
-  --models-color: pink;
-  --faq-color: blue;
-  --discord-color: indigo;
-  --github-color: rgb(32, 30, 30);
+  --blog-color: #c0392b;
+  --projects-color: #f39c12;
+  --publications-color: #27ae60;
+  --datasets-color: #2980b9;
+  --models-color: #8e44ad;
+  --faq-color: #d35400;
+  --discord-color: #7f8c8d;
+  --github-color: #2c3e50;
+  --get-involved-color: #16a085;
 }
