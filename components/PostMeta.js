@@ -16,10 +16,14 @@ export default function PostMeta({ cover, date, authors, category, tags }) {
       <div className="innerText">
         <p className="date">{date}</p>
         {authors?.map((author) => (
-          <p key={author}>{author}</p>
+          <p key={author} className="author">
+            {author}
+          </p>
         ))}
-        {category && <Tag word={category} bold />}
-        {tags && tags.map((tag, index) => <Tag key={index} word={tag} />)}
+        <div className="extra">
+          {category && <Tag word={category} bold />}
+          {tags && tags.map((tag, index) => <Tag key={index} word={tag} />)}
+        </div>
       </div>
       <style jsx>{`
         .postmeta {
@@ -37,9 +41,17 @@ export default function PostMeta({ cover, date, authors, category, tags }) {
         .date {
           font-style: italic;
         }
+        .author {
+          font-weight: bold;
+        }
         .imageContainer {
           position: relative;
           height: 10rem;
+        }
+        .extra {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
         }
       `}</style>
     </div>
