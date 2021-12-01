@@ -68,9 +68,6 @@ export default function DiscordMessage({
           gap: 0.5rem;
           align-items: center;
         }
-        .text {
-          line-height: 10;
-        }
       `}</style>
     </div>
   );
