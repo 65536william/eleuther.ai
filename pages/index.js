@@ -101,7 +101,7 @@ export default function Index({ announcementsList }) {
             <h3>Announcements</h3>
             <div className="announcementsStack">
               {announcementsList.map((announcement) => (
-                <div className="announcement">
+                <div className="announcement" key={announcement.data.date}>
                   <div className="announcementMeta">
                     <p className="announcementTitle">
                       {announcement.data.title}

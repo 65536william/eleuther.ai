@@ -24,7 +24,7 @@ export default function FAQ() {
               username="Daj"
             >
               https://arxiv.org/abs/2006.16668 Hey guys lets give OpenAI a run
-              for their money like the good ol' days
+              for their money like the good ol&apos; days
             </DiscordMessage>
             <p>
               To which <a href="https://github.com/leogao2">Leo Gao</a> replied:
@@ -44,8 +44,8 @@ export default function FAQ() {
             <p>
               In Ancient Greek,{" "}
               <a href="https://en.wikipedia.org/wiki/Eleutheria">eleutheria</a>{" "}
-              is a word for "liberty", and was used as a proper noun as a
-              personification of the concept. This same personage became{" "}
+              is a word for &quot;liberty&quot;, and was used as a proper noun
+              as a personification of the concept. This same personage became{" "}
               <a href="https://en.wikipedia.org/wiki/Libertas">Libertas</a> to
               the Romans and{" "}
               <a href="https://en.wikipedia.org/wiki/Statue_of_Liberty">
@@ -59,8 +59,8 @@ export default function FAQ() {
             <p>
               Join our <a href="https://discord.gg/zBGx3azzUn">Discord</a> or
               check us out on <a href="https://github.com/EleutherAI">GitHub</a>
-              ! We're an open community, so you are free to contribute as you
-              wish. However, we expect newcomers either to be fairly
+              ! We&apos;re an open community, so you are free to contribute as
+              you wish. However, we expect newcomers either to be fairly
               knowledgeable or to sit on the sidelines until they understand the
               internal structure and culture of our operations. If you are
               interested, check out our page on{" "}
@@ -78,7 +78,7 @@ export default function FAQ() {
             </p>
           </div>
           <div>
-            <h3>So . . . what's the deal with your logo?</h3>
+            <h3>So . . . what&apos;s the deal with your logo?</h3>
             <p>
               Keeping with the theme, our logotype and all images on this
               website were generated with deep learning techniques.
@@ -104,7 +104,7 @@ export default function FAQ() {
           </div>
           <div>
             <h3>
-              I'm new to deep learning---How do I get into AI? What is a
+              I&apos;m new to deep learning---How do I get into AI? What is a
               transformer? Tell me how everything works!
             </h3>
             <p>
@@ -444,8 +444,8 @@ export default function FAQ() {
               Discord users may not expect or want their conversations
               unwittingly added to a public dataset like this. Collecting such a
               dataset would most likely also violate{" "}
-              <a href="https://discord.com/terms">Discord's ToS</a>. In general,
-              more trouble than they're worth.
+              <a href="https://discord.com/terms">Discord&apos;s ToS</a>. In
+              general, more trouble than they&apos;re worth.
             </p>
           </div>
           <div>
