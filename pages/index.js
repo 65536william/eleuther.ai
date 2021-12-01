@@ -15,22 +15,22 @@ const sitemap = [
   },
   {
     name: "Projects",
-    slug: "blog",
+    slug: "projects",
     color: "var(--yellow)",
   },
   {
     name: "Publications",
-    slug: "blog",
+    slug: "publications",
     color: "var(--green)",
   },
   {
     name: "Datasets",
-    slug: "blog",
+    slug: "datasets",
     color: "var(--blue)",
   },
   {
     name: "Models",
-    slug: "blog",
+    slug: "models",
     color: "var(--purple)",
   },
 ];
