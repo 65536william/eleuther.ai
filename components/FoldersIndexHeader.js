@@ -1,10 +1,8 @@
 import { useState } from "react";
 import Category from "./Category";
-import Tag from "./Tag";
 
 export default function FoldersIndexHeader({
   title,
-  categories,
   categoryList,
   setCategoryList,
 }) {
@@ -14,22 +12,24 @@ export default function FoldersIndexHeader({
         <h2>{title}</h2>
         <div className="tags">
           {categoryList.length &&
-            categoryList.map((postCategory) => (
-              <Category
-                key={postCategory}
-                word={postCategory}
-                bold
-                clickFunction={(word) => {
-                  if (categoryList.every((it) => it === word)) {
-                    setCategoryList([...new Set(categories)]);
-                  } else {
-                    setCategoryList([
-                      ...new Set(categories.flat().filter((x) => x === word)),
-                    ]);
-                  }
-                }}
-              />
-            ))}
+            categoryList.map((postCategory) => {
+              return (
+                <Category
+                  key={postCategory.category + postCategory.muted}
+                  word={postCategory.category}
+                  muted={postCategory.muted}
+                  clickFunction={(word, muted) => {
+                    const tempCategoryList = categoryList.map((cat) => ({
+                      ...cat,
+                    }));
+                    tempCategoryList[
+                      tempCategoryList.findIndex((x) => x.category === word)
+                    ] = { category: word, muted: !muted };
+                    setCategoryList(tempCategoryList);
+                  }}
+                />
+              );
+            })}
         </div>
       </div>
       <style jsx>{`

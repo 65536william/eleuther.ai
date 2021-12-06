@@ -5,9 +5,16 @@ import dayjs from "dayjs";
 import { useState } from "react";
 
 export default function DisplayPostsInFolders({ title, postsList }) {
-  const [categoryList, setCategoryList] = useState([
-    ...new Set(postsList.map((post) => post.data.category)),
-  ]);
+  const filteredPosts = postsList
+    .map((post) => ({
+      category: post.data.category,
+      muted: false,
+    }))
+    .filter(
+      (thing, index, self) =>
+        index === self.findIndex((t) => t.category === thing.category)
+    );
+  const [categoryList, setCategoryList] = useState(() => filteredPosts);
   postsList.sort((a, b) => b.data.date - a.data.date);
   const postsListByYear = postsList.reduce((acc, value) => {
     const year = dayjs(Number(value.data.date)).year();
@@ -19,11 +26,12 @@ export default function DisplayPostsInFolders({ title, postsList }) {
     }
     return acc;
   }, {});
+  console.log(categoryList);
   return (
     <div>
       <FoldersIndexHeader
+        key={Object.entries(categoryList)}
         title={title}
-        categories={postsList.map((post) => post.data.category)}
         categoryList={categoryList}
         setCategoryList={setCategoryList}
       />
