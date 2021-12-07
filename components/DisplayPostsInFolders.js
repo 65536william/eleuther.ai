@@ -7,13 +7,14 @@ import { useState } from "react";
 export default function DisplayPostsInFolders({ title, postsList }) {
   const filteredPosts = postsList
     .map((post) => ({
-      category: post.data.category,
+      category: post.data.category[0],
       active: true,
     }))
     .filter(
       (thing, index, self) =>
         index === self.findIndex((t) => t.category === thing.category)
     );
+  console.log(filteredPosts);
   const [categoryList, setCategoryList] = useState(filteredPosts);
   postsList.sort((a, b) => b.data.date - a.data.date);
   const postsListByYear = postsList.reduce((acc, value) => {
@@ -23,7 +24,7 @@ export default function DisplayPostsInFolders({ title, postsList }) {
     }
     if (
       categoryList.some(
-        (x) => x.category === value.data.category && x.active === true
+        (x) => x.category.includes(value.data.category) && x.active === true
       )
     ) {
       acc[year].push(value);

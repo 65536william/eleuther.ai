@@ -1,3 +1,12 @@
+const categories = [
+  "Large Language Models",
+  "Multimodal Modeling",
+  "AI Alignment and Interpretability",
+  "Biological ML",
+  "AI-Assisted Design and Computational Creativity",
+  "Meta",
+];
+
 module.exports = {
   // We want to manually init the config file
   cms_manual_init: true,
@@ -65,7 +74,9 @@ module.exports = {
         {
           label: "Category",
           name: "category",
-          widget: "string",
+          widget: "select",
+          multiple: false,
+          options: categories,
           required: true,
         },
         {
@@ -124,7 +135,9 @@ module.exports = {
         {
           label: "Category",
           name: "category",
-          widget: "string",
+          widget: "select",
+          multiple: false,
+          options: categories,
           required: true,
         },
         {
@@ -186,7 +199,9 @@ module.exports = {
         {
           label: "Category",
           name: "category",
-          widget: "string",
+          widget: "select",
+          multiple: false,
+          options: categories,
           required: true,
         },
         {
@@ -242,7 +257,9 @@ module.exports = {
         {
           label: "Category",
           name: "category",
-          widget: "string",
+          widget: "select",
+          multiple: false,
+          options: categories,
           required: true,
         },
         {
@@ -292,7 +309,9 @@ module.exports = {
         {
           label: "Category",
           name: "category",
-          widget: "string",
+          widget: "select",
+          multiple: false,
+          options: categories,
           required: true,
         },
         {

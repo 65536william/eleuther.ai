@@ -8,7 +8,8 @@ authors:
   - Stella Biderman
 cover: public/images/hackers.png
 description: A look back at the first year of EleutherAI.
-category: Meta
+category:
+  - Meta
 tags:
   - Retrospective
 ---
