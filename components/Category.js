@@ -15,19 +15,19 @@ function getTextColor(word) {
   }
 }
 
-export default function Category({ word, clickFunction, muted }) {
-  function handleClick(word, muted) {
+export default function Category({ word, clickFunction, active }) {
+  function handleClick(word, active) {
     if (clickFunction) {
-      clickFunction(word, muted);
+      clickFunction(word, active);
     }
   }
 
   return (
-    <div onClick={() => handleClick(word, muted)}>
+    <div onClick={() => handleClick(word, active)}>
       <span>{word}</span>
       <style jsx>{`
         span {
-          color: ${muted ? "var(--gray)" : getTextColor(word)};
+          color: ${active ? getTextColor(word) : "var(--gray)"};
           font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
             segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
             sans-serif;

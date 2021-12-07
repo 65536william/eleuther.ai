@@ -15,16 +15,27 @@ export default function FoldersIndexHeader({
             categoryList.map((postCategory) => {
               return (
                 <Category
-                  key={postCategory.category + postCategory.muted}
+                  key={postCategory.category}
                   word={postCategory.category}
-                  muted={postCategory.muted}
+                  active={postCategory.active}
                   clickFunction={(word, muted) => {
-                    const tempCategoryList = categoryList.map((cat) => ({
-                      ...cat,
-                    }));
-                    tempCategoryList[
-                      tempCategoryList.findIndex((x) => x.category === word)
-                    ] = { category: word, muted: !muted };
+                    let tempCategoryList = [...categoryList];
+                    if (
+                      tempCategoryList.every((x) => x.active) &&
+                      tempCategoryList.length > 1
+                    ) {
+                      tempCategoryList = tempCategoryList.map((x) => ({
+                        ...x,
+                        active: false,
+                      }));
+                      tempCategoryList[
+                        tempCategoryList.findIndex((x) => x.category === word)
+                      ] = { category: word, active: true };
+                    } else {
+                      tempCategoryList[
+                        tempCategoryList.findIndex((x) => x.category === word)
+                      ] = { category: word, active: !muted };
+                    }
                     setCategoryList(tempCategoryList);
                   }}
                 />

@@ -8,25 +8,28 @@ export default function DisplayPostsInFolders({ title, postsList }) {
   const filteredPosts = postsList
     .map((post) => ({
       category: post.data.category,
-      muted: false,
+      active: true,
     }))
     .filter(
       (thing, index, self) =>
         index === self.findIndex((t) => t.category === thing.category)
     );
-  const [categoryList, setCategoryList] = useState(() => filteredPosts);
+  const [categoryList, setCategoryList] = useState(filteredPosts);
   postsList.sort((a, b) => b.data.date - a.data.date);
   const postsListByYear = postsList.reduce((acc, value) => {
     const year = dayjs(Number(value.data.date)).year();
     if (!acc[year]) {
       acc[year] = [];
     }
-    if (categoryList.includes(value.data.category)) {
+    if (
+      categoryList.some(
+        (x) => x.category === value.data.category && x.active === true
+      )
+    ) {
       acc[year].push(value);
     }
     return acc;
   }, {});
-  console.log(categoryList);
   return (
     <div>
       <FoldersIndexHeader
