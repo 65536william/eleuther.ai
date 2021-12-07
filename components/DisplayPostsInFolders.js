@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function DisplayPostsInFolders({ title, postsList }) {
   const filteredPosts = postsList
     .map((post) => ({
-      category: post.data.category[0],
+      category: post.data.category,
       active: true,
     }))
     .filter(
