@@ -208,7 +208,7 @@ module.exports = {
           required: true,
         },
         {
-          label: "tags",
+          label: "Tags",
           name: "tags",
           widget: "select",
           multiple: true,
@@ -220,6 +220,24 @@ module.exports = {
           label: "Body",
           name: "body",
           widget: "markdown",
+          required: true,
+        },
+        {
+          label: "(Citation) Short title",
+          name: "shortTitle",
+          widget: "string",
+          required: true,
+        },
+        {
+          label: "(Citation) Author list",
+          name: "authorList",
+          widget: "string",
+          required: false,
+        },
+        {
+          label: "(Citation) Publication URL",
+          name: "publicationUrl",
+          widget: "string",
           required: true,
         },
       ],

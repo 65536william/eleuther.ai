@@ -2,10 +2,6 @@ import fs from "fs";
 import path from "path";
 import Layout from "../../components/Layout";
 import matter from "gray-matter";
-import FoldersIndexHeader from "../../components/FoldersIndexHeader";
-import IndexCard from "../../components/IndexCard";
-import Image from "next/image";
-import PostCard from "../../components/PostCard";
 import DisplayPostsInFolders from "../../components/DisplayPostsInFolders";
 
 export async function getStaticProps() {
@@ -23,7 +19,6 @@ export async function getStaticProps() {
         slug,
       };
     });
-  console.log(postsList.length);
   return {
     props: {
       postsList,

@@ -14,7 +14,6 @@ export default function DisplayPostsInFolders({ title, postsList }) {
       (thing, index, self) =>
         index === self.findIndex((t) => t.category === thing.category)
     );
-  console.log(filteredPosts);
   const [categoryList, setCategoryList] = useState(filteredPosts);
   postsList.sort((a, b) => b.data.date - a.data.date);
   const postsListByYear = postsList.reduce((acc, value) => {
