@@ -51,11 +51,6 @@ export default function Layout({ children }) {
           font-weight: bold;
         }
 
-        p {
-          font-size: 1rem;
-          line-height: 1;
-        }
-
         table {
           font-size: 1rem;
           line-height: 2;
@@ -87,7 +82,7 @@ export default function Layout({ children }) {
         p {
           margin: 1vh 0;
           font-size: 1rem;
-          line-height: 1.5rem;
+          line-height: 1.5;
         }
 
         br {
@@ -111,6 +106,25 @@ export default function Layout({ children }) {
           margin: 2.5vh 0;
           font-size: inherit;
           line-height: 1.5rem;
+        }
+
+        @media (max-width: 800px) {
+          h1 {
+            font-size: 1.5rem;
+            line-height: 1.5;
+          }
+          h2 {
+            font-size: 1.25rem;
+            line-height: 1.25;
+          }
+          h3 {
+            font-size: 1.125rem;
+            line-height: 1.125;
+          }
+          p {
+            font-size: 0.75;
+            line-height: 1.25;
+          }
         }
 
         :root {

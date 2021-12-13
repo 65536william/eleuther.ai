@@ -45,7 +45,6 @@ export default function PostCard({ section, post }) {
       </Link>
       <style jsx>{`
         .card {
-          height: 12.5rem;
           display: flex;
           gap: 1.5rem;
           background-color: white;
