@@ -6,6 +6,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import dayjs from "dayjs";
+import PostCard from "../components/PostCard";
 
 const sitemap = [
   {
@@ -97,11 +98,20 @@ export default function Index({ announcementsList }) {
             of models designed to replicate those developed by OpenAI as GPT-3.
             Our Discord server is open and welcomes contributors.
           </p>
+          <div></div>
           <div>
             <h3>Announcements</h3>
             <div className="announcementsStack">
-              {announcementsList.map((announcement) => (
-                <div className="announcement" key={announcement.data.date}>
+              {announcementsList.slice(0, 2).map((announcement, index) => (
+                <div key={index}>
+                  <h3>{announcement.data.title}</h3>
+                </div>
+              ))}
+              {announcementsList.slice(2, 5).map((announcement, index) => (
+                <div
+                  className="announcement"
+                  key={announcement.data.date + index}
+                >
                   <div className="announcementMeta">
                     <p className="announcementTitle">
                       {announcement.data.title}
@@ -165,6 +175,12 @@ export default function Index({ announcementsList }) {
           }
           .announcementContent {
             margin: 0 0 0.5rem;
+          }
+          @media (max-width: 800px) {
+            .container {
+              grid-template-columns: 1fr;
+              gap: 2rem;
+            }
           }
         `}</style>
       </div>

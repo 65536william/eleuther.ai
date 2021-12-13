@@ -32,7 +32,7 @@ module.exports = {
     {
       name: "blog",
       label: "Blog",
-      editor: { preview: false },
+      editor: { preview: true },
       label_singular: "Blog",
       folder: "content/blog",
       create: true,

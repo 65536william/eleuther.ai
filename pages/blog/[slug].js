@@ -88,6 +88,13 @@ export default function BlogSlug({ source, frontMatter }) {
         .content {
           grid-column: 1 / 3;
         }
+        @media (max-width: 800px) {
+          .postgrid {
+            display: flex;
+            flex-direction: column-reverse;
+            width: 100%;
+          }
+        }
       `}</style>
     </Layout>
   );

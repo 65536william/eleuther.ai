@@ -36,6 +36,11 @@ export default function GridBackground() {
           position: fixed;
           grid-template-columns: 5% 1fr 150px 1fr 5%;
         }
+        @media (max-width: 800px) {
+          .columnGrid {
+            grid-template-columns: 5% 1fr 5%;
+          }
+        }
         .rowGrid {
           display: none;
           height: max-content;

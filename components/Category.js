@@ -36,6 +36,11 @@ export default function Category({ word, clickFunction, active }) {
           font-weight: bold;
           cursor: pointer;
         }
+        @media (max-width: 800px) {
+          span {
+            line-height: 2;
+          }
+        }
       `}</style>
     </div>
   );

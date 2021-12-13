@@ -71,6 +71,12 @@ export default function DisplayPostsInFolders({ title, postsList }) {
         .year {
           margin-bottom: 2.5vh;
         }
+        @media (max-width: 800px) {
+          .postsGrid {
+            grid-template-columns: 1fr;
+            gap: 50px;
+          }
+        }
       `}</style>
     </div>
   );

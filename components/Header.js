@@ -52,6 +52,11 @@ export default function Header() {
             segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
             sans-serif;
         }
+        @media (max-width: 800px) {
+          nav {
+            display: none;
+          }
+        }
       `}</style>
     </header>
   );

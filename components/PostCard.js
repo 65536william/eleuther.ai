@@ -46,8 +46,7 @@ export default function PostCard({ section, post }) {
       <style jsx>{`
         .card {
           height: 12.5rem;
-          display: grid;
-          grid-template-columns: 12.5rem 1fr;
+          display: flex;
           gap: 1.5rem;
           background-color: white;
           padding: 1.5rem;
@@ -60,6 +59,7 @@ export default function PostCard({ section, post }) {
           transform: scale(1.01);
         }
         .cardMeta {
+          width: 75%;
           padding: 1.25vh 1.25vw;
           display: flex;
           flex-direction: column;
@@ -68,6 +68,7 @@ export default function PostCard({ section, post }) {
         }
         .imageContainer {
           position: relative;
+          width: 25%;
         }
         h3 {
           font-size: 1.25rem;
