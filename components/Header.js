@@ -51,10 +51,14 @@ export default function Header() {
           font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
             segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
             sans-serif;
+          font-size: 0.875rem;
         }
         @media (max-width: 800px) {
           nav {
             display: none;
+          }
+          h1 {
+            font-size: 2rem;
           }
         }
       `}</style>

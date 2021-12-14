@@ -52,6 +52,7 @@ export default function FoldersIndexHeader({
         .tags {
           display: flex;
           gap: 1.25rem;
+          flex-wrap: wrap;
         }
         h2 {
           font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
@@ -60,6 +61,11 @@ export default function FoldersIndexHeader({
 
           line-height: 1;
           margin-bottom: 2.5vh;
+        }
+        @media (max-width: 800px) {
+          .tags {
+            gap: 0.75rem;
+          }
         }
       `}</style>
     </div>

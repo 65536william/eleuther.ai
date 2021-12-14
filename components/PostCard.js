@@ -74,13 +74,15 @@ export default function PostCard({ section, post }) {
           line-height: 1.25;
           font-weight: bold;
         }
-        .date {
-          width: max-content;
-          font-size: 1rem;
-        }
         p {
           font-size: 1.25rem;
           line-height: 1.25;
+        }
+        @media (max-width: 800px) {
+          p {
+            font-size: 1rem;
+            line-height: 1.25;
+          }
         }
       `}</style>
     </>

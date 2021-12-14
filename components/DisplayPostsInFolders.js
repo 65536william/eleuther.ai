@@ -62,6 +62,7 @@ export default function DisplayPostsInFolders({ title, postsList }) {
           grid-template-columns: 1fr 1fr;
           column-gap: 150px;
           row-gap: 50px;
+          grid-auto-rows: 1fr;
         }
         .foldersDisplay {
           display: flex;

@@ -42,6 +42,11 @@ export default function LinkCard({ slug, text, color }) {
         span {
           font-size: 1.25rem;
         }
+        @media (max-width: 800px) {
+          span {
+            font-size: 1rem;
+          }
+        }
       `}</style>
     </>
   );

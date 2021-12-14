@@ -98,7 +98,6 @@ export default function Index({ announcementsList }) {
             of models designed to replicate those developed by OpenAI as GPT-3.
             Our Discord server is open and welcomes contributors.
           </p>
-          <div></div>
           <div>
             <h3>Announcements</h3>
             <div className="announcementsStack">
@@ -180,6 +179,9 @@ export default function Index({ announcementsList }) {
             .container {
               grid-template-columns: 1fr;
               gap: 2rem;
+            }
+            .linksStack {
+              grid-template-columns: 1fr;
             }
           }
         `}</style>
