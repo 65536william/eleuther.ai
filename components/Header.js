@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
+import { useRouter } from "next/dist/client/router";
 
 export default function Header() {
   const [modalMenuOpen, setModalMenuOpen] = useState(false);
   const menuContainer = useRef(null);
+  const router = useRouter();
 
   function openMenu() {
     setModalMenuOpen(true);
@@ -15,6 +17,11 @@ export default function Header() {
     setModalMenuOpen(false);
     clearAllBodyScrollLocks();
   }
+
+  useEffect(() => {
+    router.events.on("routeChangeStart", clearAllBodyScrollLocks);
+    return () => router.events.off("routeChangeStart", clearAllBodyScrollLocks);
+  }, [router.events]);
 
   return (
     <header>
