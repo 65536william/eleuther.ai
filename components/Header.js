@@ -37,21 +37,34 @@ export default function Header() {
       </p>
       {modalMenuOpen && (
         <div className="modalMenu" ref={menuContainer}>
-          <Link href="/blog">
-            <a>Blog</a>
-          </Link>
-          <Link href="/projects">
-            <a>Projects</a>
-          </Link>
-          <Link href="/publications">
-            <a>Publications</a>
-          </Link>
-          <Link href="/datasets">
-            <a>Datasets</a>
-          </Link>
-          <Link href="/models">
-            <a>Models</a>
-          </Link>
+          <div className="exitDiv" onClick={closeMenu}>
+            <span className="xSpan">X</span>
+          </div>
+          <div className="linkLine">
+            <Link href="/blog">
+              <a style={{ borderBottom: "medium solid var(--red)" }}>Blog</a>
+            </Link>
+            <Link href="/projects">
+              <a style={{ borderBottom: "medium solid var(--yellow)" }}>
+                Projects
+              </a>
+            </Link>
+            <Link href="/publications">
+              <a style={{ borderBottom: "medium solid var(--green)" }}>
+                Publications
+              </a>
+            </Link>
+            <Link href="/datasets">
+              <a style={{ borderBottom: "medium solid var(--blue)" }}>
+                Datasets
+              </a>
+            </Link>
+            <Link href="/models">
+              <a style={{ borderBottom: "medium solid var(--purple)" }}>
+                Models
+              </a>
+            </Link>
+          </div>
         </div>
       )}
       <nav>
@@ -112,6 +125,12 @@ export default function Header() {
           overflow: hidden;
           z-index: 100;
         }
+        .exitDiv {
+          align-self: flex-end;
+          padding: 2rem;
+        }
+        .xSpan {
+        }
         @media (max-width: 800px) {
           nav {
             display: none;
@@ -130,9 +149,16 @@ export default function Header() {
           .modalMenu {
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+          }
+          .linkLine {
+            display: flex;
+            flex-direction: column;
+            margin: 2rem;
             gap: 2rem;
+          }
+          .modalMenu a {
+            font-size: 2rem;
+            padding-bottom: 0.25rem;
           }
         }
       `}</style>
