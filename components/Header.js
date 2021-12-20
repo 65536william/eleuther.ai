@@ -33,12 +33,12 @@ export default function Header() {
         </Link>
       </div>
       <p className="burgerButton" onClick={openMenu}>
-        Burger
+        ▲
       </p>
       {modalMenuOpen && (
         <div className="modalMenu" ref={menuContainer}>
           <div className="exitDiv" onClick={closeMenu}>
-            <span className="xSpan">X</span>
+            <span className="xSpan">▼</span>
           </div>
           <div className="linkLine">
             <Link href="/blog">
@@ -105,7 +105,6 @@ export default function Header() {
         }
         .burgerButton {
           display: none;
-          background-color: orange;
         }
         .modalMenu {
           display: none;

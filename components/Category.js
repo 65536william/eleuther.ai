@@ -29,7 +29,8 @@ export default function Category({ word, clickFunction, active }) {
         span {
           color: ${active ? getTextColor(word) : "var(--gray)"};
           padding-bottom: 3px;
-          border-bottom: medium solid ${getTextColor(word)};
+          border-bottom: medium solid
+            ${active ? getTextColor(word) : "var(--gray)"};
           font-weight: 600;
           cursor: pointer;
           line-height: 2;

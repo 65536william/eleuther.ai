@@ -41,10 +41,13 @@ export default function GetInvolved() {
       <style jsx>{`
         .container {
           display: grid;
-          grid-template-columns: 1fr 150px 1fr;
+          grid-template-columns: 1fr 7.5vw 1fr;
         }
         .content {
           grid-column: 1 / 3;
+          display: flex;
+          flex-direction: column;
+          gap: 3vh;
         }
       `}</style>
     </Layout>
