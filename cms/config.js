@@ -57,6 +57,7 @@ module.exports = {
           label: "Authors",
           name: "authors",
           widget: "list",
+          allow_add: true,
           field: {
             label: "Author",
             name: "author",
@@ -173,6 +174,7 @@ module.exports = {
           label: "Authors",
           name: "authors",
           widget: "list",
+          allow_add: true,
           field: {
             label: "Author",
             name: "author",
