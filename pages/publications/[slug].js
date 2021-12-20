@@ -61,12 +61,6 @@ export default function PublicationSlug({ source, frontMatter }) {
             title={frontMatter.title}
             subtitle={frontMatter.description}
           />
-          <a
-            style={{ marginLeft: "5vw", fontWeight: "bold" }}
-            href={frontMatter.link}
-          >
-            View on arXiv
-          </a>
           <PostContent>
             <MDXRemote {...source} components={components} />
           </PostContent>
@@ -77,15 +71,25 @@ export default function PublicationSlug({ source, frontMatter }) {
           authors={frontMatter.authors}
           category={frontMatter.category}
           tags={frontMatter.tags}
+          link={frontMatter.link}
         />
       </div>
       <style jsx>{`
         .postgrid {
           display: grid;
-          grid-template-columns: 1fr 150px 1fr;
+          grid-template-columns: 1fr 7.5vw 1fr;
         }
         .content {
+          display: flex;
+          flex-direction: column;
+          gap: 3vh;
           grid-column: 1 / 3;
+        }
+        @media (max-width: 875px) {
+          .postgrid {
+            display: flex;
+            flex-direction: column-reverse;
+          }
         }
       `}</style>
     </Layout>

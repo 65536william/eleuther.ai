@@ -69,7 +69,6 @@ export default function ProjectSlug({ source, frontMatter }) {
           cover={frontMatter.cover}
           date={dayjs(Number(frontMatter.date)).format("D MMMM, YYYY")}
           authors={frontMatter.authors}
-          important={frontMatter.status}
           category={frontMatter.category}
           tags={frontMatter.tags}
         />
@@ -77,10 +76,19 @@ export default function ProjectSlug({ source, frontMatter }) {
       <style jsx>{`
         .postgrid {
           display: grid;
-          grid-template-columns: 1fr 150px 1fr;
+          grid-template-columns: 1fr 7.5vw 1fr;
         }
         .content {
+          display: flex;
+          flex-direction: column;
+          gap: 3vh;
           grid-column: 1 / 3;
+        }
+        @media (max-width: 875px) {
+          .postgrid {
+            display: flex;
+            flex-direction: column-reverse;
+          }
         }
       `}</style>
     </Layout>

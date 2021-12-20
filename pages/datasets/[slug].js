@@ -71,15 +71,25 @@ export default function DatasetSlug({ source, frontMatter }) {
           authors={frontMatter.authors}
           category={frontMatter.category}
           tags={frontMatter.tags}
+          link={frontMatter.publicationUrl}
         />
       </div>
       <style jsx>{`
         .postgrid {
           display: grid;
-          grid-template-columns: 1fr 150px 1fr;
+          grid-template-columns: 1fr 7.5vw 1fr;
         }
         .content {
+          display: flex;
+          flex-direction: column;
+          gap: 3vh;
           grid-column: 1 / 3;
+        }
+        @media (max-width: 875px) {
+          .postgrid {
+            display: flex;
+            flex-direction: column-reverse;
+          }
         }
       `}</style>
     </Layout>

@@ -44,6 +44,7 @@ export default function Layout({ children }) {
 
         table {
           font-size: 1rem;
+          line-height: 2;
           border-style: hidden;
           background-color: white;
           width: 100%;
