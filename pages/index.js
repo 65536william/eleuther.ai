@@ -7,6 +7,7 @@ import path from "path";
 import matter from "gray-matter";
 import dayjs from "dayjs";
 import PostCard from "../components/PostCard";
+import AnnouncementCard from "../components/AnnouncementCard";
 
 const sitemap = [
   {
@@ -64,10 +65,10 @@ export default function Index({ announcementsList }) {
     <Layout>
       <div className="container">
         <div className="column">
-          <h4>
+          <p className="tagline">
             A grassroots collective of researchers working to open source AI
             research.
-          </h4>
+          </p>
           <div className="sitemapStack">
             {sitemap.map((link) => (
               <LinkCard
@@ -98,90 +99,72 @@ export default function Index({ announcementsList }) {
             of models designed to replicate those developed by OpenAI as GPT-3.
             Our Discord server is open and welcomes contributors.
           </p>
-          <div>
-            <h3>Announcements</h3>
-            <div className="announcementsStack">
+
+          <div className="announcementsStack">
+            <div className="headAnnouncements">
               {announcementsList.slice(0, 2).map((announcement, index) => (
-                <div key={index}>
-                  <h3>{announcement.data.title}</h3>
-                </div>
-              ))}
-              {announcementsList.slice(2, 5).map((announcement, index) => (
-                <div
-                  className="announcement"
-                  key={announcement.data.date + index}
-                >
-                  <div className="announcementMeta">
-                    <p className="announcementTitle">
-                      {announcement.data.title}
-                    </p>
-                    <p className="announcementDate">
-                      {dayjs(Number(announcement.data.date)).format(
-                        "D MMMM, YYYY"
-                      )}
-                    </p>
-                  </div>
-                  <p className="announcementContent">
-                    {announcement.content}{" "}
-                    <Link href={announcement.data.link} passHref>
-                      <a className="announcementLink">View more →</a>
-                    </Link>
-                  </p>
-                </div>
+                <AnnouncementCard
+                  key={`${announcement.data.date}` + `_${index}`}
+                  title={announcement.data.title}
+                  date={announcement.data.date}
+                  content={announcement.content}
+                  link={announcement.data.link}
+                />
               ))}
             </div>
+            {announcementsList.slice(2, 5).map((announcement, index) => (
+              <AnnouncementCard
+                key={`${announcement.data.date}` + `_${index}`}
+                title={announcement.data.title}
+                date={announcement.data.date}
+                content={announcement.content}
+                link={announcement.data.link}
+                inlineLink
+              />
+            ))}
           </div>
         </div>
         <style jsx>{`
           .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 150px;
+            gap: 7.5vw;
           }
           .column {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 5vh;
           }
           .sitemapStack {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 3vh;
           }
           .linksStack {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: 3vh;
+          }
+          .tagline {
+            font-size: 1.25rem;
           }
           .announcementsStack {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 5vh;
           }
-          .announcementMeta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+          .headAnnouncements {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1vh;
           }
-          .announcementTitle {
-            font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-              segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
-              sans-serif;
-            font-size: 1.125rem;
-          }
-          .announcementDate {
-            font-size: 0.75rem;
-          }
-          .announcementContent {
-            margin: 0 0 0.5rem;
-          }
-          @media (max-width: 800px) {
+          @media (max-width: 875px) {
             .container {
               grid-template-columns: 1fr;
-              gap: 2rem;
+              gap: 3vh;
             }
-            .linksStack {
-              grid-template-columns: 1fr;
+            .tagline {
+              font-size: 1rem;
             }
           }
         `}</style>

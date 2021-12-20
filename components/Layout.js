@@ -13,6 +13,7 @@ export default function Layout({ children }) {
         main {
           margin: 0 5vw;
           min-height: 100vh;
+          transition: all 0.2s ease-in-out;
         }
 
         body {
@@ -28,15 +29,17 @@ export default function Layout({ children }) {
 
         h2 {
           font-size: 1.75rem;
+          font-weight: 600;
         }
 
         h3 {
           font-size: 1.5rem;
-          font-weight: bold;
+          font-weight: 600;
         }
 
         h4 {
           font-size: 1.25rem;
+          font-weight: 600;
         }
 
         table {
@@ -56,6 +59,11 @@ export default function Layout({ children }) {
           background-color: rgba(0, 0, 0, 0.05);
         }
 
+        p {
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+
         a {
           font-style: italic;
           text-decoration: underline;
@@ -64,12 +72,6 @@ export default function Layout({ children }) {
 
         a:hover {
           color: rgba(0, 0, 0, 0.5);
-        }
-
-        p {
-          margin: 1vh 0;
-          font-size: 1rem;
-          line-height: 1.5;
         }
 
         br {
@@ -92,24 +94,24 @@ export default function Layout({ children }) {
         ol li {
           margin: 2.5vh 0;
           font-size: inherit;
-          line-height: 1.5rem;
+          line-height: 1.5;
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 750px) {
           h1 {
-            font-size: 1.5rem;
-            line-height: 1.5;
+            font-size: 2rem;
           }
           h2 {
-            font-size: 1.25rem;
-            line-height: 1.25;
+            font-size: 1.5rem;
           }
           h3 {
             font-size: 1.125rem;
-            line-height: 1.125;
+          }
+          h4 {
+            font-size: 1rem;
           }
           p {
-            font-size: 0.75;
+            font-size: 0.875rem;
             line-height: 1.25;
           }
         }
