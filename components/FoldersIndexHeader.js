@@ -36,6 +36,12 @@ export default function FoldersIndexHeader({
                         tempCategoryList.findIndex((x) => x.category === word)
                       ] = { category: word, active: !muted };
                     }
+                    if (tempCategoryList.every((x) => !x.active)) {
+                      tempCategoryList = tempCategoryList.map((x) => ({
+                        ...x,
+                        active: true,
+                      }));
+                    }
                     setCategoryList(tempCategoryList);
                   }}
                 />

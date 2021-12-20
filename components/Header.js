@@ -28,7 +28,7 @@ export default function Header() {
       <div>
         <Link href="/">
           <a>
-            <h1>EleutherAI</h1>
+            <h1 className="title">EleutherAI</h1>
           </a>
         </Link>
       </div>
@@ -90,12 +90,8 @@ export default function Header() {
           grid-template-columns: 1fr 1fr;
           gap: 150px;
           padding-top: 5vh;
-          margin: 0 5vw 5vh;
-        }
-        h1 {
-          font-weight: bold;
-          line-height: 1;
-          font-size: 2.5rem;
+          margin: 0 5vw 2.5vh;
+          align-items: center;
         }
         nav {
           display: flex;
@@ -105,9 +101,6 @@ export default function Header() {
           text-decoration: none;
           color: inherit;
           font-style: normal;
-          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
-            sans-serif;
           font-size: 0.875rem;
         }
         .burgerButton {

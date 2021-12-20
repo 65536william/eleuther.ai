@@ -14,46 +14,33 @@ export default function Layout({ children }) {
           margin: 0 5vw;
           min-height: 100vh;
         }
-        body {
-          font-family: Iowan Old Style, Apple Garamond, Baskerville,
-            Times New Roman, Droid Serif, Times, Source Serif Pro, serif,
-            Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-          font-weight: 400;
-        }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        span {
-          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
-            sans-serif;
+        body {
+          font-family: Rubik, -apple-system, BlinkMacSystemFont, "Segoe UI",
+            Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+            "Segoe UI Emoji", "Segoe UI Symbol";
         }
 
         h1 {
-          font-size: 2rem;
-          font-weight: bold;
-          line-height: 2;
+          font-size: 2.25rem;
+          font-weight: 600;
         }
 
         h2 {
-          font-size: 1.5rem;
-          line-height: 1.5;
-          font-weight: bold;
+          font-size: 1.75rem;
         }
 
         h3 {
-          font-size: 1.25rem;
-          line-height: 1.25;
+          font-size: 1.5rem;
           font-weight: bold;
+        }
+
+        h4 {
+          font-size: 1.25rem;
         }
 
         table {
           font-size: 1rem;
-          line-height: 2;
           border-style: hidden;
           background-color: white;
           width: 100%;

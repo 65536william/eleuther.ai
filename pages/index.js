@@ -64,10 +64,10 @@ export default function Index({ announcementsList }) {
     <Layout>
       <div className="container">
         <div className="column">
-          <h2>
+          <h4>
             A grassroots collective of researchers working to open source AI
             research.
-          </h2>
+          </h4>
           <div className="sitemapStack">
             {sitemap.map((link) => (
               <LinkCard
