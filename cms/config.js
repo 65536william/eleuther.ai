@@ -57,7 +57,7 @@ module.exports = {
           label: "Authors",
           name: "authors",
           widget: "list",
-          field: { author: string },
+          field: { author: "string" },
           default: ["Contributor A, Contributor B"],
         },
         {
