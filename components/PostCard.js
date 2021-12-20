@@ -1,8 +1,5 @@
 import Link from "next/link";
-import IndexCard from "./IndexCard";
-import Image from "next/image";
 import Tag from "./Tag";
-import categoryColors from "../styles/categoryColors";
 
 export default function PostCard({ section, post }) {
   return (
@@ -15,38 +12,31 @@ export default function PostCard({ section, post }) {
         key={post.slug}
       >
         <div className="card">
-          <div className="cardMeta">
-            <h3>{post.data.title}</h3>
-            <p>{post.data.description}</p>
-            {post.data.tags?.map((tag) => (
-              <Tag key={tag} word={tag} bold />
-            ))}
+          <h3 className="cardTitle">{post.data.title}</h3>
+          <p>{post.data.description}</p>
+          <div style={{ alignSelf: "flex-end" }}>
+            <Tag word={post.data.category} bold />
           </div>
         </div>
       </Link>
       <style jsx>{`
         .card {
-          display: flex;
-          gap: 1.5rem;
           background-color: white;
-          border-radius: 0.25rem;
+          padding: 5%;
           transition: all 0.2s ease-in-out;
           border: thin solid rgba(0, 0, 0, 0.25);
+          display: flex;
+          flex-direction: column;
+          gap: 1.5vh;
         }
         .card:hover {
-          box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0.5vw 1vw 0 rgba(0, 0, 0, 0.25);
           transform: scale(1.01);
         }
-        h3 {
-          font-size: 1.25rem;
-          line-height: 1.25;
-          font-weight: bold;
+        .cardTitle {
+          font-weight: normal;
         }
-        p {
-          font-size: 1.25rem;
-          line-height: 1.25;
-        }
-        @media (max-width: 800px) {
+        @media (max-width: 875px) {
           p {
             font-size: 1rem;
             line-height: 1.25;

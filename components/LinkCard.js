@@ -18,7 +18,7 @@ export default function LinkCard({ slug, text, color }) {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          padding: 2vh 1.25vw;
+          padding: 1rem;
           cursor: pointer;
           border: thin solid rgba(0, 0, 0, 0.25);
           transition: all 0.2s ease-in-out;

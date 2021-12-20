@@ -1,17 +1,17 @@
 function getDivColor(word) {
   switch (word) {
-    case "Language Modeling":
-      return "var(--red-dark)";
-    case "Activation Functions":
-      return "var(--yellow-dark)";
-    case "GPT-Neo":
-      return "var(--green-dark)";
-    case "GPT-3":
-      return "var(--blue-dark)";
-    case "Rotary Embeddings":
-      return "var(--purple-dark)";
+    case "Large Language Models":
+      return "var(--red)";
+    case "Multimodal Modeling":
+      return "var(--yellow)";
+    case "AI Alignment and Interpretability":
+      return "var(--green)";
+    case "Biological ML":
+      return "var(--blue)";
+    case "AI-Assisted Design and Computational Creativity":
+      return "var(--purple)";
     default:
-      return "black";
+      return "var(--black)";
   }
 }
 
@@ -23,22 +23,26 @@ export default function Tag({ word, clickFunction, bold }) {
   }
 
   return (
-    <div onClick={() => handleClick(word)}>
-      <span>{word}</span>
+    <div className="tag" onClick={() => handleClick(word)}>
+      <span className="word">{word}</span>
       <style jsx>{`
-        div {
+        .tag {
           border: ${bold ? `thin solid ${getDivColor(word)}` : "none"};
           display: inline-block;
           width: max-content;
-          padding: 0.125rem 0.25rem 0.25rem;
-          border-radius: 0.25rem;
+          padding: 0.25rem;
         }
-        span {
+        .word {
           font-size: 0.75rem;
           color: ${bold ? getDivColor(word) : "black"};
-          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
-            sans-serif;
+        }
+        @media (max-width: 875px) {
+          .word {
+            font-size: 0.625rem;
+          }
+          .tag {
+            padding: 0.125rem;
+          }
         }
       `}</style>
     </div>

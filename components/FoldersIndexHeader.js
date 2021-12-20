@@ -7,10 +7,10 @@ export default function FoldersIndexHeader({
   setCategoryList,
 }) {
   return (
-    <div className="header">
+    <div>
       <div className="content">
         <h2>{title}</h2>
-        <div className="tags">
+        <div className="categories">
           {categoryList.length &&
             categoryList.map((postCategory) => {
               return (
@@ -54,24 +54,12 @@ export default function FoldersIndexHeader({
           margin: 5vh 0vw;
           display: flex;
           flex-direction: column;
+          gap: 1.5vh;
         }
-        .tags {
+        .categories {
           display: flex;
-          gap: 1.25rem;
+          gap: 1.5vw;
           flex-wrap: wrap;
-        }
-        h2 {
-          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
-            sans-serif;
-
-          line-height: 1;
-          margin-bottom: 2.5vh;
-        }
-        @media (max-width: 800px) {
-          .tags {
-            gap: 0.75rem;
-          }
         }
       `}</style>
     </div>

@@ -80,15 +80,6 @@ module.exports = {
           required: true,
         },
         {
-          label: "tags",
-          name: "tags",
-          widget: "select",
-          multiple: true,
-          options: ["GPT-Neo", "Language Modeling", "Bio ML"],
-          required: true,
-          allow_add: true,
-        },
-        {
           label: "Body",
           name: "body",
           widget: "markdown",
@@ -139,14 +130,6 @@ module.exports = {
           widget: "select",
           multiple: false,
           options: categories,
-          required: true,
-        },
-        {
-          label: "tags",
-          name: "tags",
-          widget: "select",
-          multiple: true,
-          options: ["GPT-Neo", "Language Modeling", "Bio ML"],
           required: true,
         },
         {
@@ -206,15 +189,6 @@ module.exports = {
           multiple: false,
           options: categories,
           required: true,
-        },
-        {
-          label: "Tags",
-          name: "tags",
-          widget: "select",
-          multiple: true,
-          options: ["GPT-Neo", "Language Modeling", "Bio ML"],
-          required: true,
-          allow_add: true,
         },
         {
           label: "Body",
@@ -287,15 +261,6 @@ module.exports = {
           required: true,
         },
         {
-          label: "tags",
-          name: "tags",
-          widget: "select",
-          multiple: true,
-          options: ["GPT-Neo", "Language Modeling", "Bio ML"],
-          required: true,
-          allow_add: true,
-        },
-        {
           label: "Body",
           name: "body",
           widget: "markdown",
@@ -358,15 +323,6 @@ module.exports = {
           multiple: false,
           options: categories,
           required: true,
-        },
-        {
-          label: "tags",
-          name: "tags",
-          widget: "select",
-          multiple: true,
-          options: ["GPT-Neo", "Language Modeling", "Bio ML"],
-          required: true,
-          allow_add: true,
         },
         {
           label: "Body",

@@ -42,8 +42,8 @@ export default function DisplayPostsInFolders({ title, postsList }) {
         {Object.entries(postsListByYear)
           .reverse()
           .map(([year, posts]) => (
-            <div key={year}>
-              <h3 className="year">{year}</h3>
+            <div key={year} className="yearSection">
+              <h3>{year}</h3>
               <div className="postsGrid">
                 {posts.map((post) => (
                   <PostCard
@@ -60,8 +60,8 @@ export default function DisplayPostsInFolders({ title, postsList }) {
         .postsGrid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          column-gap: 150px;
-          row-gap: 50px;
+          column-gap: 7.5vw;
+          row-gap: 5vh;
           grid-auto-rows: 1fr;
         }
         .foldersDisplay {
@@ -69,13 +69,14 @@ export default function DisplayPostsInFolders({ title, postsList }) {
           flex-direction: column;
           gap: 5vh;
         }
-        .year {
-          margin-bottom: 2.5vh;
+        .yearSection {
+          display: flex;
+          flex-direction: column;
+          gap: 2.5vh;
         }
-        @media (max-width: 800px) {
+        @media (max-width: 875px) {
           .postsGrid {
             grid-template-columns: 1fr;
-            gap: 50px;
           }
         }
       `}</style>

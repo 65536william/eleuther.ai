@@ -101,25 +101,13 @@ export default function Index({ announcementsList }) {
           </p>
 
           <div className="announcementsStack">
-            <div className="headAnnouncements">
-              {announcementsList.slice(0, 2).map((announcement, index) => (
-                <AnnouncementCard
-                  key={`${announcement.data.date}` + `_${index}`}
-                  title={announcement.data.title}
-                  date={announcement.data.date}
-                  content={announcement.content}
-                  link={announcement.data.link}
-                />
-              ))}
-            </div>
-            {announcementsList.slice(2, 5).map((announcement, index) => (
+            {announcementsList.map((announcement, index) => (
               <AnnouncementCard
                 key={`${announcement.data.date}` + `_${index}`}
                 title={announcement.data.title}
                 date={announcement.data.date}
                 content={announcement.content}
                 link={announcement.data.link}
-                inlineLink
               />
             ))}
           </div>
@@ -151,7 +139,7 @@ export default function Index({ announcementsList }) {
           .announcementsStack {
             display: flex;
             flex-direction: column;
-            gap: 5vh;
+            gap: 3vh;
           }
           .headAnnouncements {
             display: grid;
@@ -165,6 +153,9 @@ export default function Index({ announcementsList }) {
             }
             .tagline {
               font-size: 1rem;
+            }
+            .linksStack {
+              grid-template-columns: 1fr;
             }
           }
         `}</style>
@@ -189,7 +180,7 @@ export async function getStaticProps() {
       };
     })
     .sort((a, b) => b.data.date - a.data.date)
-    .slice(0, 5);
+    .slice(0, 4);
   return {
     props: {
       announcementsList,

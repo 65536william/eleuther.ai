@@ -8,7 +8,7 @@ export default function Layout({ children }) {
       <GridBackground />
       <Header />
       <main>{children}</main>
-      <Footer />
+      {/* <Footer /> */}
       <style jsx global>{`
         main {
           margin: 0 5vw;
@@ -59,6 +59,7 @@ export default function Layout({ children }) {
           background-color: rgba(0, 0, 0, 0.05);
         }
 
+        span,
         p {
           font-size: 1rem;
           line-height: 1.5;
@@ -97,7 +98,7 @@ export default function Layout({ children }) {
           line-height: 1.5;
         }
 
-        @media (max-width: 750px) {
+        @media (max-width: 875px) {
           h1 {
             font-size: 2rem;
           }
@@ -110,6 +111,7 @@ export default function Layout({ children }) {
           h4 {
             font-size: 1rem;
           }
+          span,
           p {
             font-size: 0.875rem;
             line-height: 1.25;

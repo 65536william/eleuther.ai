@@ -10,14 +10,16 @@ export default function AnnouncementCard({ title, date, content, link }) {
       </div>
       <p>{content}</p>
       <Link href={link} passHref>
-        <a className="announcementLink">View more →</a>
+        <p>
+          {" "}
+          <a className="announcementLink">View more →</a>
+        </p>
       </Link>
       <style jsx>{`
         .card {
           display: flex;
           flex-direction: column;
           gap: 1vh;
-          padding: 0 1.25vw;
         }
         .head {
           display: flex;

@@ -28,18 +28,11 @@ export default function Category({ word, clickFunction, active }) {
       <style jsx>{`
         span {
           color: ${active ? getTextColor(word) : "var(--gray)"};
-          font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir,
-            segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial,
-            sans-serif;
-          padding-bottom: 4px;
+          padding-bottom: 3px;
           border-bottom: medium solid ${getTextColor(word)};
-          font-weight: bold;
+          font-weight: 600;
           cursor: pointer;
-        }
-        @media (max-width: 800px) {
-          span {
-            line-height: 2;
-          }
+          line-height: 2;
         }
       `}</style>
     </div>

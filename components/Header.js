@@ -88,7 +88,7 @@ export default function Header() {
         header {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 150px;
+          gap: 7.5vw;
           padding-top: 5vh;
           margin: 0 5vw 2.5vh;
           align-items: center;
@@ -124,7 +124,7 @@ export default function Header() {
         }
         .xSpan {
         }
-        @media (max-width: 800px) {
+        @media (max-width: 875px) {
           nav {
             display: none;
           }

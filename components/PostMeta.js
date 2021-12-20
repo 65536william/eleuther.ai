@@ -53,7 +53,7 @@ export default function PostMeta({ cover, date, authors, category, tags }) {
           flex-direction: column;
           gap: 0.75rem;
         }
-        @media (max-width: 800px) {
+        @media (max-width: 875px) {
           .postmeta {
             position: static;
             width: 90%;
