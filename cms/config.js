@@ -14,7 +14,7 @@ module.exports = {
   // Backend configuration, in this case with git
   backend: {
     name: "git-gateway",
-    branch: "main",
+    branch: "updates",
     squash_merges: true,
   },
 
@@ -57,6 +57,7 @@ module.exports = {
           label: "Authors",
           name: "authors",
           widget: "list",
+          field: { author: string },
           default: ["Contributor A, Contributor B"],
         },
         {
